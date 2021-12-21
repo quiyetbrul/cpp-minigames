@@ -1,5 +1,5 @@
-#ifndef QUARTZPARCELSHEARS_H
-#define QUARTZPARCELSHEARS_H
+#ifndef QUARTZPARCHMENTSHEARS_H
+#define QUARTZPARCHMENTSHEARS_H
 
 class QuartzParchmentShears
 {
@@ -65,4 +65,4 @@ public:
   void play();
 };
 
-#endif // QUARTZPARCELSHEARS_H
+#endif // QUARTZPARCHMENTSHEARS_H
