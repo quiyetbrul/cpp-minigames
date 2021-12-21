@@ -67,6 +67,3 @@ cleanw:
 .PHONY: cleandepw
 cleandepw:
 	$(DEL) $(DEP)
-##################### Creating tar for submission ######################
-tar:
-	tar cf hw16.tar hw16.scr Makefile ./src/*
