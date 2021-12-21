@@ -1,13 +1,13 @@
 #include <iostream>
 
-// #include "QuartzParchmentShears/QuartzParchmentShearsGameplay.h"
+#include "QuartzParchmentShearsGameplay.h"
 
 int main()
 {
-  srand(time(NULL));
 
   std::cout << "Welcome to Quartz Parchment Shears!\n";
-  // QuartzParchmentShearsGameplay();
+
+  QuartzParchmentShearsGameplay();
 
   return 0;
 }
