@@ -1,7 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include "InputValidation.h"
+#include "../InputValidation/InputValidation.h"
 
 class GameObject
 {

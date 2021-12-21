@@ -8,7 +8,7 @@ CXXFLAGS = -std=c++20 -Wall
 LDFLAGS = 
 
 # Makefile settings - Can be customized.
-APPNAME = cppPractice
+APPNAME = main
 EXT = .cpp
 SRCDIR = ./src
 OBJDIR = .
