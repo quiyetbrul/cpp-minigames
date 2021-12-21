@@ -30,13 +30,13 @@ void play()
              (game.getPlayerChoice() == 2 && game.getComputerChoice() == 1) ||
              (game.getPlayerChoice() == 3 && game.getComputerChoice() == 2))
     {
-        game.showResult(true);
+        game.showResult(true, true);
     }
     else if ((game.getPlayerChoice() == 3 && game.getComputerChoice() == 1) ||
              (game.getPlayerChoice() == 1 && game.getComputerChoice() == 2) ||
              (game.getPlayerChoice() == 2 && game.getComputerChoice() == 3))
     {
-        game.showResult(false);
+        game.showResult(false, true);
     }
 }
 

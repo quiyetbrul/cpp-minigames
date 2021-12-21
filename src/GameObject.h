@@ -69,9 +69,9 @@ public:
   int generateComputerChoice(int endRange);
 
   // showResult
-  // Precondition: playerWins is a boolean
+  // Precondition: playerWins is a boolean, hasScore determines if the game has scoring functionality
   // Postcondition: displays the result of the game
-  void showResult(bool playerWins);
+  void showResult(bool isWinner, bool hasScore);
 };
 
 #endif // GAMEOBJECT_H

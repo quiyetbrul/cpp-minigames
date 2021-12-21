@@ -73,22 +73,33 @@ int GameObject::generateComputerChoice(int endRange)
     return computerChoice;
 }
 
-void GameObject::showResult(bool playerWins)
+void GameObject::showResult(bool isWinner, bool hasScore)
 {
-    std::cout << "Player chose: " << getPlayerChoice() << std::endl;
-    std::cout << "Computer chose: " << getComputerChoice() << std::endl;
+    if(hasScore){
+        std::cout << "Player chose: " << getPlayerChoice() << std::endl;
+        std::cout << "Computer chose: " << getComputerChoice() << std::endl;
 
-    if (playerWins)
-    {
-        std::cout << "\nPlayer wins!" << std::endl;
-        setPlayerScore(getPlayerScore() + 1);
-    }
-    else
-    {
-        std::cout << "\nComputer wins!" << std::endl;
-        setComputerScore(getComputerScore() + 1);
-    }
+        if (isWinner)
+        {
+            std::cout << "\nPlayer wins!" << std::endl;
+            setPlayerScore(getPlayerScore() + 1);
+        }
+        else
+        {
+            std::cout << "\nComputer wins!" << std::endl;
+            setComputerScore(getComputerScore() + 1);
+        }
 
-    std::cout << "\nPlayer Score: " << getPlayerScore() << std::endl;
-    std::cout << "Computer Score: " << getComputerScore() << std::endl;
+        std::cout << "\nPlayer Score: " << getPlayerScore() << std::endl;
+        std::cout << "Computer Score: " << getComputerScore() << std::endl;
+    }else{
+        if (isWinner)
+        {
+            std::cout << "\nPlayer wins!" << std::endl;
+        }
+        else
+        {
+            std::cout << "\nComputer wins!" << std::endl;
+        }
+    }
 }
