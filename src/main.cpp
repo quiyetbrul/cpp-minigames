@@ -1,12 +1,10 @@
 #include <iostream>
 
-// #include "QuartzParchmentShears/QuartzParchmentShearsGameplay.h"
-#include "QuartzParchmentShearsGameplay.h"
+#include "GameQuartzParchmentShears.h"
 
-int main()
-{
+int main() {
 
-  QuartzParchmentShearsGameplay();
+  GameQuartzParchmentShears();
 
   return 0;
 }

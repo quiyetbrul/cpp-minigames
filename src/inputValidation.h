@@ -1,8 +1,8 @@
 #ifndef INPUTVALIDATION_H
 #define INPUTVALIDATION_H
 
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 #include <string>
 
 // inputChar
@@ -11,8 +11,8 @@
 char inputChar(std::string prompt);
 
 // inputChar
-// Precondition: prompt is a string, listChars is a list of characters user can input
-// Postcondition: return an input char
+// Precondition: prompt is a string, listChars is a list of characters user can
+// input Postcondition: return an input char
 char inputChar(std::string prompt, std::string listChars);
 
 // inputChar
@@ -32,7 +32,8 @@ int inputInteger(std::string prompt);
 
 // inputInteger
 // Precondition: prompt is a string, posNeg is a bool
-// Postcondition: return an integer where posNeg is positive (true) or negative (false)
+// Postcondition: return an integer where posNeg is positive (true) or negative
+// (false)
 int inputInteger(std::string prompt, bool posNeg);
 
 // inputInteger
@@ -47,7 +48,8 @@ double inputDouble(std::string prompt);
 
 // inputDouble
 // Precondition: prompt is a string, posNeg is a bool
-// Postcondition: return an input double where posNeg is positive (true) or negative (false)
+// Postcondition: return an input double where posNeg is positive (true) or
+// negative (false)
 double inputDouble(std::string prompt, bool posNeg);
 
 // inputDouble

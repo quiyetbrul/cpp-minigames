@@ -4,7 +4,7 @@
 #include "GameObject.h"
 
 // this is the main file for the QuartzParchmentShears
-void QuartzParchmentShearsGameplay();
+void GameQuartzParchmentShears();
 
 // play
 void play();

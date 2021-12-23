@@ -3,8 +3,7 @@
 
 #include "InputValidation.h"
 
-class GameObject
-{
+class GameObject {
 private:
   int playerChoice;
   int computerChoice;
@@ -20,7 +19,8 @@ public:
   // parameterized constructor
   // Precondition:
   // Postcondition: initializes data members
-  GameObject(int playerChoice, int computerChoice, int playerScore, int computerScore);
+  GameObject(int playerChoice, int computerChoice, int playerScore,
+             int computerScore);
 
   // setPlayerChoice
   // Precondition: playerChoice is an integer
@@ -69,8 +69,8 @@ public:
   int generateComputerChoice(int endRange);
 
   // showResult
-  // Precondition: playerWins is a boolean, hasScore determines if the game has scoring functionality
-  // Postcondition: displays the result of the game
+  // Precondition: playerWins is a boolean, hasScore determines if the game has
+  // scoring functionality Postcondition: displays the result of the game
   void showResult(bool isWinner, bool hasScore);
 };
 
