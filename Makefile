@@ -1,17 +1,17 @@
 ########################################################################
-####################### Makefile Template ##############################
+############################ Makefile ##################################
 ########################################################################
 
 # Compiler settings - Can be customized.
-CC = g++
+CC = clang++
 CXXFLAGS = -std=c++20 -Wall
-LDFLAGS = 
+LDFLAGS = -g
 
 # Makefile settings - Can be customized.
 APPNAME = main
 EXT = .cpp
-SRCDIR = ./src
-OBJDIR = .
+SRCDIR = src
+OBJDIR = obj
 
 ############## Do not change anything from here downwards! #############
 SRC = $(wildcard $(SRCDIR)/*$(EXT))
