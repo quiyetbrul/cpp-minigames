@@ -1,7 +1,7 @@
 #ifndef GAMETICTACTOE_H
 #define GAMETICTACTOE_H
 
-#include "GameObject.h"
+#include "ClassPlayer.h"
 
 void reset(int board[][3]);
 
@@ -11,6 +11,8 @@ bool isDraw(const int board[][3]);
 
 void displayBoard(const int board[][3]);
 
-void play();
+void PlayTicTacToe();
+
+void GameTicTactoe();
 
 #endif // GAMETICTACTOE_H
