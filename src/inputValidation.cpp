@@ -172,9 +172,24 @@ double inputDouble(std::string prompt, double startRange, double endRange) {
     } else if (!(input >= std::min(startRange, endRange) &&
                  input <= std::max(startRange, endRange)))
       std::cout << "ERROR-3A: Invalid input. Must be from " << startRange
-                << ".." << endRange << ".\n";
+                << "..." << endRange << ".\n";
     else
       break;
   } while (true);
+  return input;
+}
+
+std::string inputString(std::string prompt) {
+  std::string input;
+  do {
+    std::cout << prompt;
+    if (!(std::cin >> input)) {
+      std::cout << "ERROR-1A: Invalid input. Must be a string type.\n";
+      std::cin.clear();
+      std::cin.ignore(999, '\n');
+    } else
+      break;
+  }while (true);
+
   return input;
 }

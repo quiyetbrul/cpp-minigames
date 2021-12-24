@@ -57,4 +57,5 @@ double inputDouble(std::string prompt, bool posNeg);
 // Postcondition: return an input double within range
 double inputDouble(std::string prompt, double startRange, double endRange);
 
+std::string inputString(std::string prompt);
 #endif // INPUTVALIDATION_H
