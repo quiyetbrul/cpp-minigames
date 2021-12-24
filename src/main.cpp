@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "GameQuartzParchmentShears.h"
+#include "Menu.h"
 
 int main() {
 
-  GameQuartzParchmentShears();
+  Menu();
 
   return 0;
 }
