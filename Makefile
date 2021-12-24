@@ -8,7 +8,7 @@ CXXFLAGS = -std=c++20 -Wall
 LDFLAGS = -g
 
 # Makefile settings - Can be customized.
-APPNAME = main
+APPNAME = main.o
 EXT = .cpp
 SRCDIR = src
 OBJDIR = obj
