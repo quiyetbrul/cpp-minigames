@@ -13,7 +13,9 @@ void GuessNumber::Reset(std::vector<int> &guessHistory, int &numberOfGuess) {
 
 int GuessNumber::NumberOfGuess(int &numberOfGuess) { return ++numberOfGuess; }
 
-void GuessNumber::GuessMechanics(bool player, const int startRange, const int endRange, const int guess, const int numberToGuess, int &numberOfGuess) {
+void GuessNumber::GuessMechanics(bool player, const int startRange,
+                                 const int endRange, const int guess,
+                                 const int numberToGuess, int &numberOfGuess) {
   // who is the player?
   std::string currentGuesser =
       player ? playerOne.getPlayerName() : computer.getPlayerName();
@@ -21,7 +23,8 @@ void GuessNumber::GuessMechanics(bool player, const int startRange, const int en
   // right guess
   if (guess == numberToGuess) {
     NumberOfGuess(numberOfGuess);
-    std::cout << currentGuesser << " guessed " << guess << " in " << numberOfGuess << " guesses." << std::endl;
+    std::cout << currentGuesser << " guessed " << guess << " in "
+              << numberOfGuess << " guesses." << std::endl;
     return;
   }
 
@@ -38,25 +41,26 @@ void GuessNumber::GuessMechanics(bool player, const int startRange, const int en
 
   // show history
   std::cout << "Guess history: ";
-  for(int i : guessHistory) {
+  for (int i : guessHistory) {
     std::cout << i << " ";
   }
   std::cout << std::endl;
 
   // out of range
-  if(guess < startRange || guess > endRange) {
-    std::cout << currentGuesser << " guess must be between " << startRange << " and " << endRange << std::endl;
+  if (guess < startRange || guess > endRange) {
+    std::cout << currentGuesser << " guess must be between " << startRange
+              << " and " << endRange << std::endl;
     // NumberOfGuess(numberOfGuess);
     return;
   }
   // too high
-  else if (guess > numberToGuess){
+  else if (guess > numberToGuess) {
     std::cout << currentGuesser << " guessed too high." << std::endl;
     NumberOfGuess(numberOfGuess);
     return;
   }
   // too low
-  else if(guess < numberToGuess){
+  else if (guess < numberToGuess) {
     std::cout << currentGuesser << " guessed too low." << std::endl;
     NumberOfGuess(numberOfGuess);
     return;
@@ -66,13 +70,13 @@ void GuessNumber::GuessMechanics(bool player, const int startRange, const int en
 void GuessNumber::GameMechanics() {
 
   startRange = 1; // INT_MIN;
-  endRange = 100;   // INT_MAX;
+  endRange = 100; // INT_MAX;
 
   Reset(guessHistory, numberOfGuess);
 
   std::string gameName = "Guess Number";
   Welcome(gameName, false);
-  
+
   // set players' names
   computer.setPlayerName("Computer");
   playerOne.setPlayerName("Player One");
@@ -82,21 +86,28 @@ void GuessNumber::GameMechanics() {
 
   // computer will give a random number, player will guess
   if (player == 1) {
-    std::cout << playerOne.getPlayerName() << " must guess a number between " << startRange << " and " << endRange << "." << std::endl;
+    std::cout << playerOne.getPlayerName() << " must guess a number between "
+              << startRange << " and " << endRange << "." << std::endl;
     computer.setPlayerChoice(randomNumber(startRange, endRange));
-    std::cout << computer.getPlayerName() << " chose " << computer.getPlayerChoice() << std::endl;
+    std::cout << computer.getPlayerName() << " chose "
+              << computer.getPlayerChoice() << std::endl;
 
     while (playerOne.getPlayerChoice() != computer.getPlayerChoice()) {
-      playerOne.setPlayerChoice(playerOne.playerPrompt(", enter your guess: ", startRange, endRange));
-      GuessMechanics(true, startRange, endRange, playerOne.getPlayerChoice(), computer.getPlayerChoice(), numberOfGuess);
+      playerOne.setPlayerChoice(
+          playerOne.playerPrompt(", enter your guess: ", startRange, endRange));
+      GuessMechanics(true, startRange, endRange, playerOne.getPlayerChoice(),
+                     computer.getPlayerChoice(), numberOfGuess);
       std::cout << std::endl;
     }
   }
   // player will give a random number, computer will guess
   else if (player == 2) {
-    std::cout << computer.getPlayerName() << " must guess a number between " << startRange << " and " << endRange << "." << std::endl;
-    playerOne.setPlayerChoice(playerOne.playerPrompt(", enter a number for computer to guess: ", startRange, endRange));
-    std::cout << playerOne.getPlayerName() << " chose " << playerOne.getPlayerChoice() << std::endl;
+    std::cout << computer.getPlayerName() << " must guess a number between "
+              << startRange << " and " << endRange << "." << std::endl;
+    playerOne.setPlayerChoice(playerOne.playerPrompt(
+        ", enter a number for computer to guess: ", startRange, endRange));
+    std::cout << playerOne.getPlayerName() << " chose "
+              << playerOne.getPlayerChoice() << std::endl;
 
     while (computer.getPlayerChoice() != playerOne.getPlayerChoice()) {
       // do I want this or do I want Player::intBinarySearch(int,int,int)?
@@ -126,8 +137,10 @@ void GuessNumber::GameMechanics() {
       }
 
       // if guess is not in history, continue
-      if(!(std::find(guessHistory.begin(), guessHistory.end(), computer.getPlayerChoice()) != guessHistory.end())) {
-        GuessMechanics(false, startRange, endRange, computer.getPlayerChoice(), playerOne.getPlayerChoice(), numberOfGuess);
+      if (!(std::find(guessHistory.begin(), guessHistory.end(),
+                      computer.getPlayerChoice()) != guessHistory.end())) {
+        GuessMechanics(false, startRange, endRange, computer.getPlayerChoice(),
+                       playerOne.getPlayerChoice(), numberOfGuess);
         std::cout << std::endl;
       }
     }

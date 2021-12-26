@@ -5,7 +5,8 @@ Player::Player() {
   playerScore = 0;
 }
 
-Player::Player(std::string playerName, int playerChoice, int playerScore, bool isWinner) {
+Player::Player(std::string playerName, int playerChoice, int playerScore,
+               bool isWinner) {
   this->playerName = playerName;
   this->playerChoice = playerChoice;
   this->playerScore = playerScore;
@@ -46,7 +47,8 @@ void Player::showChoice() {
 void Player::addScore() { setPlayerScore(getPlayerScore() + 1); }
 
 void Player::showWinner() {
-  std::cout << getPlayerName() << (getIsWinner() ? " wins!" : " lost!") << std::endl;
+  std::cout << getPlayerName() << (getIsWinner() ? " wins!" : " lost!")
+            << std::endl;
 }
 
 void Player::showScore() {

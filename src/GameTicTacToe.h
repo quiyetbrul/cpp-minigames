@@ -5,7 +5,6 @@
 
 class TicTacToe : public Player {
 private:
-
 public:
   // default constructor
   TicTacToe();

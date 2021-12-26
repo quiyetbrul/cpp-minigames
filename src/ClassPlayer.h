@@ -2,8 +2,8 @@
 #define CLASSPLAYER_H
 
 #include "GameObject.h"
-#include "InputValidation.h"
 #include "GameWelcome.h"
+#include "InputValidation.h"
 
 class Player : public GameObject {
 protected:
@@ -21,7 +21,8 @@ public:
   // parameterized constructor
   // Precondition:
   // Postcondition: initializes data members
-  Player(std::string playerName, int playerChoice, int playerScore, bool isWinner);
+  Player(std::string playerName, int playerChoice, int playerScore,
+         bool isWinner);
 
   // setPlayerChoice
   // Precondition: playerName is a valid string
@@ -64,8 +65,8 @@ public:
   bool getIsWinner();
 
   // playerPrompt
-  // Precondition: prompt is a valid string, startRange and endRange are integers
-  // Postcondition: prompts the user for their choice
+  // Precondition: prompt is a valid string, startRange and endRange are
+  // integers Postcondition: prompts the user for their choice
   int playerPrompt(std::string prompt, int startRange, int endRange);
 
   // showChoice

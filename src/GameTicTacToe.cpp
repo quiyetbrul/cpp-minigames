@@ -42,9 +42,11 @@ void TicTacToe::IsWinner(const int board[SIZE][SIZE]) {
     } // end nested inner for loop
 
     // check for winner
-    if (sumRow == SIZE || sumColumn == SIZE || sumDiagonalLeft == SIZE ||sumDiagonalRight == SIZE)
+    if (sumRow == SIZE || sumColumn == SIZE || sumDiagonalLeft == SIZE ||
+        sumDiagonalRight == SIZE)
       playerOne.setIsWinner(true);
-    if (sumRow == -SIZE || sumColumn == -SIZE || sumDiagonalLeft == -SIZE ||sumDiagonalRight == -SIZE)
+    if (sumRow == -SIZE || sumColumn == -SIZE || sumDiagonalLeft == -SIZE ||
+        sumDiagonalRight == -SIZE)
       playerTwo.setIsWinner(true);
   } // end nested outer for loop
 }

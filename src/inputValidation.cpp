@@ -189,7 +189,7 @@ std::string inputString(std::string prompt) {
       std::cin.ignore(999, '\n');
     } else
       break;
-  }while (true);
+  } while (true);
 
   return input;
 }

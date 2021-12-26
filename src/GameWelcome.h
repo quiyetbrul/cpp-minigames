@@ -1,8 +1,8 @@
 #ifndef GAMEWELCOME_H
 #define GAMEWELCOME_H
 
-#include <string>
 #include <iostream>
+#include <string>
 
 // Welcome
 // Precondition: gameName is a valid string, players is a boolean

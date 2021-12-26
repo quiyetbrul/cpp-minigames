@@ -1,9 +1,9 @@
 #ifndef MENU_H
 #define MENU_H
 
+#include "GameGuessNumber.h"
 #include "GameQuartzParchmentShears.h"
 #include "GameTicTacToe.h"
-#include "GameGuessNumber.h"
 
 void Menu();
 

@@ -22,9 +22,10 @@ void QuartzParchmentShears::GameMechanics() {
   int startRange = 1;
   int endRange = 3;
   std::string prompt = ", enter your choice: ";
-  
+
   // get/set player choice
-  playerOne.setPlayerChoice(playerOne.playerPrompt(prompt, startRange, endRange));
+  playerOne.setPlayerChoice(
+      playerOne.playerPrompt(prompt, startRange, endRange));
 
   // generate computer choice
   computer.setPlayerChoice(computer.randomNumber(startRange, endRange));
@@ -44,9 +45,12 @@ void QuartzParchmentShears::GameMechanics() {
     playerOne.showScore();
     computer.showScore();
 
-  } else if ((playerOne.getPlayerChoice() == 1 && computer.getPlayerChoice() == 3) ||
-             (playerOne.getPlayerChoice() == 2 && computer.getPlayerChoice() == 1) ||
-             (playerOne.getPlayerChoice() == 3 && computer.getPlayerChoice() == 2)) {
+  } else if ((playerOne.getPlayerChoice() == 1 &&
+              computer.getPlayerChoice() == 3) ||
+             (playerOne.getPlayerChoice() == 2 &&
+              computer.getPlayerChoice() == 1) ||
+             (playerOne.getPlayerChoice() == 3 &&
+              computer.getPlayerChoice() == 2)) {
     // show player's and computer's choices
     playerOne.showChoice();
     computer.showChoice();
@@ -63,10 +67,13 @@ void QuartzParchmentShears::GameMechanics() {
     // show score
     playerOne.showScore();
     computer.showScore();
-    
-  } else if ((playerOne.getPlayerChoice() == 3 && computer.getPlayerChoice() == 1) ||
-             (playerOne.getPlayerChoice() == 1 && computer.getPlayerChoice() == 2) ||
-             (playerOne.getPlayerChoice() == 2 && computer.getPlayerChoice() == 3)) {
+
+  } else if ((playerOne.getPlayerChoice() == 3 &&
+              computer.getPlayerChoice() == 1) ||
+             (playerOne.getPlayerChoice() == 1 &&
+              computer.getPlayerChoice() == 2) ||
+             (playerOne.getPlayerChoice() == 2 &&
+              computer.getPlayerChoice() == 3)) {
     // show player's and computer's choices
     playerOne.showChoice();
     computer.showChoice();

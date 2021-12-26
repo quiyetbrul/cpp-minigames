@@ -2,9 +2,9 @@
 #define INPUTVALIDATION_H
 
 #include <algorithm>
+#include <climits>
 #include <iostream>
 #include <string>
-#include <climits>
 #include <vector>
 
 // inputChar

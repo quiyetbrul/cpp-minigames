@@ -5,7 +5,6 @@
 
 class QuartzParchmentShears : public Player {
 private:
-
 public:
   // default constructor
   QuartzParchmentShears();
