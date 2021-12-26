@@ -39,12 +39,6 @@ int Player::playerPrompt(std::string prompt, int startRange, int endRange) {
   return input;
 }
 
-int Player::generateComputerChoice(int startRange, int endRange) {
-  srand(time(NULL));
-  int computerChoice = rand() % (endRange - startRange) + startRange;
-  return computerChoice;
-}
-
 void Player::showChoice() {
   std::cout << getPlayerName() << " chose: " << getPlayerChoice() << std::endl;
 }
@@ -57,4 +51,30 @@ void Player::showWinner() {
 
 void Player::showScore() {
   std::cout << getPlayerName() << " score: " << getPlayerScore() << std::endl;
+}
+
+int Player::randomNumber(int startRange, int endRange) {
+  srand(time(NULL));
+  int computerChoice = rand() % (endRange - startRange) + startRange;
+  return computerChoice;
+}
+
+int Player::intBinarySearch(int startRange, int endRange, int target) {
+  int mid = (startRange + endRange) / 2;
+
+  if (startRange > endRange) {
+    return -1;
+  }
+  if (startRange > endRange) {
+    return -1;
+  }
+  if (target == mid) {
+    return mid;
+  }
+  if (target < mid) {
+    return intBinarySearch(startRange, mid - 1, target);
+  }
+  if (target > mid) {
+    return intBinarySearch(mid + 1, endRange, target);
+  }
 }

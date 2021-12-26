@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include "InputValidation.h"
+#include "GameWelcome.h"
 
 class Player : public GameObject {
 protected:
@@ -67,11 +68,6 @@ public:
   // Postcondition: prompts the user for their choice
   int playerPrompt(std::string prompt, int startRange, int endRange);
 
-  // generateComputerChoice
-  // Precondition: endRange is an integer
-  // Postcondition: generates a random number between 1 to x
-  int generateComputerChoice(int startRange, int endRange);
-
   // showChoice
   // Precondition:
   // Postcondition: displays the player's choice
@@ -92,6 +88,16 @@ public:
   // Precondition:
   // Postcondition: displays the player's score
   void showScore();
+
+  // generateComputerChoice
+  // Precondition: endRange is an integer
+  // Postcondition: generates a random number between 1 to x
+  int randomNumber(int startRange, int endRange);
+
+  // intBinarySearch
+  // Precondition: startRange, endRange, and target are integers
+  // Postcondition: returns target if it is found in the array
+  int intBinarySearch(int startRange, int endRange, int target);
 };
 
 #endif // CLASSPLAYER_H
