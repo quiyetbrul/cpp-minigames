@@ -41,8 +41,8 @@ void GuessNumber::GuessMechanics(bool player, const int startRange,
 
   // show history
   std::cout << "Guess history: ";
-  for (int i : guessHistory) {
-    std::cout << i << " ";
+  for (int i = 0; i < guessHistory.size(); i++) {
+    std::cout << guessHistory[i] << " ";
   }
   std::cout << std::endl;
 
