@@ -3,6 +3,10 @@
 #include "Menu.h"
 
 void Menu() {
+
+  QuartzParchmentShears QuartzParchmentShears;
+  TicTacToe TicTacToe;
+
   do {
     system("clear");
     std::cout << "CHOOSE A MINI GAME" << std::endl;
@@ -14,11 +18,16 @@ void Menu() {
     int choice = inputInteger("Enter your choice: ", 0, 2);
 
     switch (choice) {
-      case 1: GameQuartzParchmentShears(); break;
-      case 2: GameTicTactoe(); break;
-      case 0: exit(0);
-      default: std::cout << "=-=-= ERROR: INVALID CHOICE =-=-=" << std::endl;
+    case 1:
+      QuartzParchmentShears.GamePlay();
+      break;
+    case 2:
+      TicTacToe.GamePlay();
+      break;
+    case 0:
+      exit(0);
+    default:
+      std::cout << "=-=-= ERROR: INVALID CHOICE =-=-=" << std::endl;
     }
-  }while (true);
-  
+  } while (true);
 }
