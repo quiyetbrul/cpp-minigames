@@ -1,16 +1,17 @@
 #include "GameQuartzParchmentShears.h"
 
-void PlayQuartzParchmentShears() {
+static Player playerOne;
+static Player computer;
+
+QuartzParchmentShears::QuartzParchmentShears() {}
+
+void QuartzParchmentShears::GameMechanics() {
   std::cout << "Welcome to the game of Quartz Parchment Shears!" << std::endl;
   std::cout << "You are playing against a computer." << std::endl;
   std::cout << "Choose your weapon: " << std::endl;
   std::cout << "1 - Rock" << std::endl;
   std::cout << "2 - Paper" << std::endl;
   std::cout << "3 - Scissors" << std::endl;
-
-  // instantiate player objects
-  static Player computer;
-  static Player playerOne;
 
   // set players' names
   computer.setPlayerName("Computer");
@@ -49,8 +50,11 @@ void PlayQuartzParchmentShears() {
     playerOne.showChoice();
     computer.showChoice();
 
+    // player wins
+    playerOne.setIsWinner(true);
+
     // show winner
-    playerOne.showWinner(true);
+    playerOne.showWinner();
 
     // add score
     playerOne.addScore();
@@ -66,8 +70,11 @@ void PlayQuartzParchmentShears() {
     playerOne.showChoice();
     computer.showChoice();
 
+    // player wins
+    computer.setIsWinner(true);
+
     // show winner
-    computer.showWinner(true);
+    computer.showWinner();
 
     // add score
     computer.addScore();
@@ -80,12 +87,12 @@ void PlayQuartzParchmentShears() {
   std::cout << std::endl;
 }
 
-void GameQuartzParchmentShears() {
+void QuartzParchmentShears::GamePlay() {
   system("clear");
   char ans = ' ';
 
   do {
-    PlayQuartzParchmentShears();
+    GameMechanics();
     ans = inputChar("Play again? (y/n): ", 'y', 'n');
   } while (ans == 'y' || ans == 'Y');
 }

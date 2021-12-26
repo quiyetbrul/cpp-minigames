@@ -3,10 +3,23 @@
 
 #include "ClassPlayer.h"
 
-// play
-void PlayQuartzParchmentShears();
+class QuartzParchmentShears : public Player {
+private:
+  
 
-// this is the main file for the QuartzParchmentShears
-void GameQuartzParchmentShears();
+public:
+  // default constructor
+  QuartzParchmentShears();
+
+  // game mechanics
+  // Precondition:
+  // Postcondition: game mechanics are run
+  void GameMechanics();
+
+  // game play
+  // Precondition:
+  // Postcondition: game play is run
+  void GamePlay();
+};
 
 #endif // QUARTZPARCHMENTSHEARSGAMEPLAY_H
