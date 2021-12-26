@@ -27,7 +27,7 @@ void Menu() {
     case 0:
       exit(0);
     default:
-      std::cout << "=-=-= ERROR: INVALID CHOICE =-=-=" << std::endl;
+      std::cout << "=-=-= ERROR - MENU: INVALID CHOICE =-=-=" << std::endl;
     }
   } while (true);
 }
