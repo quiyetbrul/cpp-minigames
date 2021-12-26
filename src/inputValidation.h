@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <iostream>
 #include <string>
+#include <climits>
+#include <vector>
 
 // inputChar
 // Precondition: prompt is a string
