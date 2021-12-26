@@ -1,14 +1,14 @@
 #include "GameTicTacToe.h"
 #include "InputValidation.h"
 
-Player playerOne;
-Player playerTwo;
+static Player playerOne;
+static Player playerTwo;
 
 const int SIZE = 3;
 
 TicTacToe::TicTacToe() {}
 
-void TicTacToe::reset(int board[SIZE][SIZE]) {
+void TicTacToe::Reset(int board[SIZE][SIZE]) {
   for (int row = 0; row < SIZE; row++) {
     for (int column = 0; column < SIZE; column++) {
       board[row][column] = 0;
@@ -20,7 +20,7 @@ void TicTacToe::reset(int board[SIZE][SIZE]) {
   }
 }
 
-void TicTacToe::isWinner(const int board[SIZE][SIZE]) {
+void TicTacToe::IsWinner(const int board[SIZE][SIZE]) {
   int sumRow = 0;
   int sumColumn = 0;
   int sumDiagonalRight = 0;
@@ -28,9 +28,12 @@ void TicTacToe::isWinner(const int board[SIZE][SIZE]) {
 
   for (int row = 0; row < SIZE; row++) {
     for (int column = 0; column < SIZE; column++) {
-      // check rows and columns
+      // add rows
       sumRow += board[row][column];
+
+      // add columns
       sumColumn += board[column][row];
+
       // check diagonals
       if (row == column)
         sumDiagonalLeft += board[row][column];
@@ -39,16 +42,14 @@ void TicTacToe::isWinner(const int board[SIZE][SIZE]) {
     } // end nested inner for loop
 
     // check for winner
-    if (sumRow == SIZE || sumColumn == SIZE || sumDiagonalLeft == SIZE ||
-        sumDiagonalRight == SIZE)
+    if (sumRow == SIZE || sumColumn == SIZE || sumDiagonalLeft == SIZE ||sumDiagonalRight == SIZE)
       playerOne.setIsWinner(true);
-    if (sumRow == -SIZE || sumColumn == -SIZE || sumDiagonalLeft == -SIZE ||
-        sumDiagonalRight == -SIZE)
+    if (sumRow == -SIZE || sumColumn == -SIZE || sumDiagonalLeft == -SIZE ||sumDiagonalRight == -SIZE)
       playerTwo.setIsWinner(true);
   } // end nested outer for loop
 }
 
-bool TicTacToe::isDraw(const int board[SIZE][SIZE]) {
+bool TicTacToe::IsDraw(const int board[SIZE][SIZE]) {
   for (int row = 0; row < SIZE; row++)
     for (int column = 0; column < SIZE; column++)
       if (board[row][column] == 0)
@@ -56,7 +57,7 @@ bool TicTacToe::isDraw(const int board[SIZE][SIZE]) {
   return true;
 }
 
-void TicTacToe::displayBoard(const int board[SIZE][SIZE]) {
+void TicTacToe::DisplayBoard(const int board[SIZE][SIZE]) {
   for (int row = 0; row < SIZE; row++) {
     for (int column = 0; column < SIZE; column++) {
       std::cout << ((board[row][column] == 1)    ? "[X]"
@@ -72,7 +73,7 @@ void TicTacToe::GameMechanics() {
   int board[SIZE][SIZE];
 
   // reset
-  reset(board);
+  Reset(board);
 
   std::cout << "Welcome to the game of Tic Tac Toe!" << std::endl;
   std::cout << "This is a two-player game." << std::endl;
@@ -80,7 +81,7 @@ void TicTacToe::GameMechanics() {
   playerOne.setPlayerName(inputString("Enter player one's name (X): "));
   playerTwo.setPlayerName(inputString("Enter player two's name (O): "));
 
-  displayBoard(board);
+  DisplayBoard(board);
 
   int startRange = 0;
   int endRange = 2;
@@ -109,22 +110,22 @@ void TicTacToe::GameMechanics() {
       }
     }
 
-    isWinner(board);
+    IsWinner(board);
 
     if (playerOne.getIsWinner()) {
-      displayBoard(board);
+      DisplayBoard(board);
       playerOne.showWinner();
       break;
     } else if (playerTwo.getIsWinner()) {
-      displayBoard(board);
+      DisplayBoard(board);
       playerTwo.showWinner();
       break;
-    } else if (isDraw(board)) {
+    } else if (IsDraw(board)) {
       std::cout << "It's a draw!" << std::endl;
       break;
     }
-    
-    displayBoard(board);
+
+    DisplayBoard(board);
     player *= -player;
   }
 }
