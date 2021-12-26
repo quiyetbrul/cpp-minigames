@@ -1,4 +1,5 @@
 #include "GameQuartzParchmentShears.h"
+#include <cstdlib>
 
 static Player playerOne;
 static Player computer;
@@ -94,5 +95,6 @@ void QuartzParchmentShears::GamePlay() {
   do {
     GameMechanics();
     ans = inputChar("Play again? (y/n): ", 'y', 'n');
+    system("clear");
   } while (ans == 'y' || ans == 'Y');
 }
