@@ -3,6 +3,7 @@
 
 #include "GameQuartzParchmentShears.h"
 #include "GameTicTacToe.h"
+#include "GameGuessNumber.h"
 
 void Menu();
 
