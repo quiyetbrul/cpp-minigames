@@ -7,8 +7,8 @@ static Player computer;
 QuartzParchmentShears::QuartzParchmentShears() {}
 
 void QuartzParchmentShears::GameMechanics() {
-  std::cout << "Welcome to the game of Quartz Parchment Shears!" << std::endl;
-  std::cout << "You are playing against a computer." << std::endl;
+  std::string gameName = "Quarts Parchment Shears";
+  Welcome(gameName, false);
   std::cout << "Choose your weapon: " << std::endl;
   std::cout << "1 - Rock" << std::endl;
   std::cout << "2 - Paper" << std::endl;
@@ -27,7 +27,7 @@ void QuartzParchmentShears::GameMechanics() {
   playerOne.setPlayerChoice(playerOne.playerPrompt(prompt, startRange, endRange));
 
   // generate computer choice
-  computer.setPlayerChoice(computer.generateComputerChoice(startRange, endRange));
+  computer.setPlayerChoice(computer.randomNumber(startRange, endRange));
 
   std::cout << std::endl;
 

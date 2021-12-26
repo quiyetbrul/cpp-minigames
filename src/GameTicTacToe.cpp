@@ -75,11 +75,11 @@ void TicTacToe::GameMechanics() {
   // reset
   Reset(board);
 
-  std::cout << "Welcome to the game of Tic Tac Toe!" << std::endl;
-  std::cout << "This is a two-player game." << std::endl;
+  std::string gameName = "Guess Number";
+  Welcome(gameName, true);
 
-  playerOne.setPlayerName(inputString("Enter player one's name (X): "));
-  playerTwo.setPlayerName(inputString("Enter player two's name (O): "));
+  playerOne.setPlayerName(inputString("Enter player X's name: "));
+  playerTwo.setPlayerName(inputString("Enter player O's name: "));
 
   DisplayBoard(board);
 
