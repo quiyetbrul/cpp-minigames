@@ -81,4 +81,6 @@ int Player::intBinarySearch(int startRange, int endRange, int target) {
   if (target > mid) {
     return intBinarySearch(mid + 1, endRange, target);
   }
+
+  return -1;
 }
