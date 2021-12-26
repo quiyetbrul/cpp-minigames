@@ -4,161 +4,139 @@
 Player playerOne;
 Player playerTwo;
 
-void reset(int board[][3]) {
-  for (int row = 0; row < 3; row++) {
-    for (int column = 0; column < 3; column++) {
+const int SIZE = 3;
+
+TicTacToe::TicTacToe() {}
+
+void TicTacToe::reset(int board[SIZE][SIZE]) {
+  for (int row = 0; row < SIZE; row++) {
+    for (int column = 0; column < SIZE; column++) {
       board[row][column] = 0;
+      playerOne.setIsWinner(false);
+      playerOne.setPlayerName("");
+      playerTwo.setIsWinner(false);
+      playerTwo.setPlayerName("");
     }
   }
 }
 
-bool isWinner(const int board[][3], int &player) {
-  // all rows
-  for (int row = 0; row < 3; row++)
-    if (board[row][0] + board[row][1] + board[row][2] == 3) {
-      player = 1;
-      return true;
-    } else if (board[row][0] + board[row][1] + board[row][2] == -3) {
-      player = -1;
-      return true;
-    }
+void TicTacToe::isWinner(const int board[SIZE][SIZE]) {
+  int sumRow = 0;
+  int sumColumn = 0;
+  int sumDiagonalRight = 0;
+  int sumDiagonalLeft = 0;
 
-  // all columns
-  for (int column = 0; column < 3; column++)
-    if (board[0][column] + board[1][column] + board[2][column] == 3) {
-      player = 1;
-      return true;
-    } else if (board[0][column] + board[1][column] + board[2][column] == -3) {
-      player = -1;
-      return true;
-    }
-  
-  // all diagonal
-  if ((board[0][0] + board[1][1] + board[2][2] == 3) ||
-      (board[0][2] + board[1][1] + board[2][0] == 3)) {
-    player = 1;
-    return true;
-  } else if ((board[0][0] + board[1][1] + board[2][2] == -3) ||
-             (board[0][2] + board[1][1] + board[2][0] == -3)) {
-    player = -1;
-    return true;
-  }
+  for (int row = 0; row < SIZE; row++) {
+    for (int column = 0; column < SIZE; column++) {
+      // check rows and columns
+      sumRow += board[row][column];
+      sumColumn += board[column][row];
+      // check diagonals
+      if (row == column)
+        sumDiagonalLeft += board[row][column];
+      else if ((row + column) == (SIZE - 1))
+        sumDiagonalRight += board[row][SIZE - column - 1];
+    } // end nested inner for loop
 
-  return false;
+    // check for winner
+    if (sumRow == SIZE || sumColumn == SIZE || sumDiagonalLeft == SIZE ||
+        sumDiagonalRight == SIZE)
+      playerOne.setIsWinner(true);
+    if (sumRow == -SIZE || sumColumn == -SIZE || sumDiagonalLeft == -SIZE ||
+        sumDiagonalRight == -SIZE)
+      playerTwo.setIsWinner(true);
+  } // end nested outer for loop
 }
 
-bool isDraw(const int board[][3]) {
-  for (int row = 0; row < 3; row++)
-    for (int column = 0; column < 3; column++)
+bool TicTacToe::isDraw(const int board[SIZE][SIZE]) {
+  for (int row = 0; row < SIZE; row++)
+    for (int column = 0; column < SIZE; column++)
       if (board[row][column] == 0)
         return false;
   return true;
 }
 
-void displayBoard(const int b[][3]) {
-  for (int row = 0; row < 3; row++) {
-    for (int column = 0; column < 3; column++)
-      if (b[row][column] == 0)
-        std::cout << "[ ]";
-      else if (b[row][column] == 1)
-        std::cout << "[X]";
-      else if (b[row][column] == -1)
-        std::cout << "[O]";
+void TicTacToe::displayBoard(const int board[SIZE][SIZE]) {
+  for (int row = 0; row < SIZE; row++) {
+    for (int column = 0; column < SIZE; column++) {
+      std::cout << ((board[row][column] == 1)    ? "[X]"
+                    : (board[row][column] == -1) ? "[O]"
+                                                 : "[ ]");
+    }
     std::cout << std::endl;
   }
 }
 
-void checkGameStatus(const int board[][3], int &player){
-  if (isWinner(board, player)) {
-    player == 1 ? playerOne.showWinner(true) : playerTwo.showWinner(true);
-  } else if (isDraw(board)) {
-    std::cout << "It is a draw\n";
-  }
-}
+void TicTacToe::GameMechanics() {
 
-void PlayTicTacToe() {
-  std::cout << "Welcome to the game of Quartz Parchment Shears!" << std::endl;
-  std::cout << "This is a two-player game." << std::endl;
-
-  std::string playerOneName = inputString("Enter player one's name (X): ");
-  std::string playerTwoName = inputString("Enter player two's name (O): ");
-
-  playerOne.setPlayerName(playerOneName);
-  playerTwo.setPlayerName(playerTwoName);
-
-  int board[3][3];
+  int board[SIZE][SIZE];
 
   // reset
   reset(board);
 
-  int player = 0; // determine which player
-  int player1 = 1;  // 1 represent X
-  int player2 = -1; // 2 represent O
+  std::cout << "Welcome to the game of Tic Tac Toe!" << std::endl;
+  std::cout << "This is a two-player game." << std::endl;
+
+  playerOne.setPlayerName(inputString("Enter player one's name (X): "));
+  playerTwo.setPlayerName(inputString("Enter player two's name (O): "));
+
+  displayBoard(board);
 
   int startRange = 0;
   int endRange = 2;
-
   std::string promptRow = " choose row: ";
   std::string promptColumn = " choose column: ";
   std::string ERROR = "ERROR: Square has been played. Choose again.\n";
+  int row = 0;
+  int column = 0;
 
+  int player = 1; // 1 represent X and -1 represent O
   while (true) {
-
-    displayBoard(board);
-
     while (true) {
-      int row = playerOne.playerPrompt(promptRow, startRange, endRange);
-      int column = playerOne.playerPrompt(promptColumn, startRange, endRange);
+      if (player == 1) {
+        row = playerOne.playerPrompt(promptRow, startRange, endRange);
+        column = playerOne.playerPrompt(promptColumn, startRange, endRange);
+      } else if (player == -1) {
+        row = playerTwo.playerPrompt(promptRow, startRange, endRange);
+        column = playerTwo.playerPrompt(promptColumn, startRange, endRange);
+      }
 
       if (board[row][column] == 0) {
-        board[row][column] = player1;
+        board[row][column] = player;
         break;
       } else {
         std::cout << ERROR;
       }
     }
 
-    displayBoard(board);
+    isWinner(board);
 
-    if (isWinner(board, player)) {
-      playerOne.showWinner(true);
+    if (playerOne.getIsWinner()) {
+      displayBoard(board);
+      playerOne.showWinner();
+      break;
+    } else if (playerTwo.getIsWinner()) {
+      displayBoard(board);
+      playerTwo.showWinner();
       break;
     } else if (isDraw(board)) {
-      std::cout << "It is a draw\n";
+      std::cout << "It's a draw!" << std::endl;
       break;
     }
-
-    while (true) {
-      int row = playerTwo.playerPrompt(promptRow, startRange, endRange);
-      int column = playerTwo.playerPrompt(promptColumn, startRange, endRange);
-
-      if (board[row][column] == 0) {
-        board[row][column] = player2;
-        break;
-      } else {
-        std::cout << ERROR;
-      }
-
-      displayBoard(board);
-
-      if (isWinner(board, player)) {
-        playerTwo.showWinner(true);
-        break;
-      } else if (isDraw(board)) {
-        std::cout << "It is a draw\n";
-        break;
-      }
-    }
+    
+    displayBoard(board);
+    player *= -player;
   }
 }
 
-void GameTicTactoe() {
+void TicTacToe::GamePlay() {
   system("clear");
 
   char ans = ' ';
 
   do {
-    PlayTicTacToe();
+    GameMechanics();
     ans = inputChar("Play again? (y/n): ", 'y', 'n');
+    system("clear");
   } while (ans == 'y' || ans == 'Y');
 }
