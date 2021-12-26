@@ -1,8 +1,10 @@
 #include "ClassPlayer.h"
 
 Player::Player() {
+  playerName = "";
   playerChoice = 0;
   playerScore = 0;
+  isWinner = false;
 }
 
 Player::Player(std::string playerName, int playerChoice, int playerScore,
