@@ -77,11 +77,11 @@ void TicTacToe::GameMechanics() {
   // reset
   Reset(board);
 
-  std::string gameName = "Guess Number";
+  std::string gameName = "Tic Tac Toe";
   Welcome(gameName, true);
 
-  playerOne.setPlayerName(inputString("Enter player X's name: "));
-  playerTwo.setPlayerName(inputString("Enter player O's name: "));
+  playerOne.setPlayerName("Player One");
+  playerTwo.setPlayerName("Player Two");
 
   DisplayBoard(board);
 
