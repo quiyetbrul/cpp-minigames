@@ -28,6 +28,10 @@ void Player::setPlayerScore(int playerScore) {
 
 int Player::getPlayerScore() { return playerScore; }
 
+void Player::setIsWinner(bool isWinner) { this->isWinner = isWinner; }
+
+bool Player::getIsWinner() { return isWinner; }
+
 int Player::playerPrompt(std::string prompt, int startRange, int endRange) {
   int input = inputInteger(getPlayerName() + prompt, startRange, endRange);
   return input;
@@ -45,8 +49,8 @@ void Player::showChoice() {
 
 void Player::addScore() { setPlayerScore(getPlayerScore() + 1); }
 
-void Player::showWinner(bool isWinner) {
-  std::cout << getPlayerName() << (isWinner ? " wins!" : " lost!") << std::endl;
+void Player::showWinner() {
+  std::cout << getPlayerName() << (getIsWinner() ? " wins!" : " lost!") << std::endl;
 }
 
 void Player::showScore() {

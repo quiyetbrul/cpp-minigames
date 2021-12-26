@@ -5,10 +5,11 @@
 #include "InputValidation.h"
 
 class Player : public GameObject {
-private:
+protected:
   std::string playerName;
   int playerChoice;
   int playerScore;
+  bool isWinner;
 
 public:
   // default constructor
@@ -51,6 +52,16 @@ public:
   // Postcondition: returns the playerScore data member
   int getPlayerScore();
 
+  // setIsWinner
+  // Precondition: isWinner is a boolean
+  // Postcondition: sets the isWinner data member
+  void setIsWinner(bool isWinner);
+
+  // getIsWinner
+  // Precondition:
+  // Postcondition: returns the isWinner data member
+  bool getIsWinner();
+
   // playerPrompt
   // Precondition: prompt is a valid string, startRange and endRange are integers
   // Postcondition: prompts the user for their choice
@@ -75,7 +86,7 @@ public:
   // Precondition: playerWins is a boolean, hasScore determines if the game
   // has scoring functionality Postcondition: displays the result of the
   // game
-  void showWinner(bool isWinner);
+  void showWinner();
 
   // showScore
   // Precondition:
