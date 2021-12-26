@@ -20,7 +20,7 @@ public:
   // parameterized constructor
   // Precondition:
   // Postcondition: initializes data members
-  Player(int playerChoice, int playerScore);
+  Player(std::string playerName, int playerChoice, int playerScore, bool isWinner);
 
   // setPlayerChoice
   // Precondition: playerName is a valid string

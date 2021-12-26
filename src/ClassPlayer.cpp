@@ -5,9 +5,11 @@ Player::Player() {
   playerScore = 0;
 }
 
-Player::Player(int playerChoice, int playerScore) {
+Player::Player(std::string playerName, int playerChoice, int playerScore, bool isWinner) {
+  this->playerName = playerName;
   this->playerChoice = playerChoice;
   this->playerScore = playerScore;
+  this->isWinner = isWinner;
 }
 
 void Player::setPlayerName(std::string playerName) {
