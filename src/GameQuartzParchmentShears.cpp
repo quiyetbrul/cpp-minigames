@@ -1,5 +1,4 @@
 #include "GameQuartzParchmentShears.h"
-#include <cstdlib>
 
 static Player playerOne;
 static Player computer;

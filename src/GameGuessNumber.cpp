@@ -1,5 +1,4 @@
 #include "GameGuessNumber.h"
-#include <climits>
 
 static Player playerOne;
 static Player computer;

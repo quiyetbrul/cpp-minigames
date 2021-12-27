@@ -1,5 +1,4 @@
 #include "GameTicTacToe.h"
-#include "InputValidation.h"
 
 static Player playerOne;
 static Player playerTwo;
