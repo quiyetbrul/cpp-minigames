@@ -82,7 +82,7 @@ void GuessNumber::GameMechanics() {
   playerOne.setPlayerName("Player One");
 
   // who is playing?
-  int player = inputInteger("Who is playing (1-Player, 2-Computer)?: ", 1, 2);
+  int player = inputInteger("Who is playing (1-Player, 2-Computer)?: ", 1, 2,"GuessNumber::GameMechanics()");
 
   // computer will give a random number, player will guess
   if (player == 1) {
@@ -153,7 +153,7 @@ void GuessNumber::GamePlay() {
 
   do {
     GameMechanics();
-    ans = inputChar("Play again? (y/n): ", 'y', 'n');
+    ans = inputChar("Play again? (y/n): ", 'y', 'n', "GuessNumber::GamePlay()");
     system("clear");
   } while (ans == 'y' || ans == 'Y');
 }

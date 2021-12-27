@@ -17,7 +17,7 @@ void Menu() {
     std::cout << "3. Guess Number" << std::endl;
     std::cout << "0. Quit" << std::endl;
     std::cout << "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=" << std::endl;
-    int choice = inputInteger("Enter your choice: ", 0, 3);
+    int choice = inputInteger("Enter your choice: ", 0, 3, "Menu()");
 
     switch (choice) {
     case 1:
