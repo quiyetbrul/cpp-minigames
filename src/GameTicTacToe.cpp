@@ -139,7 +139,7 @@ void TicTacToe::GamePlay() {
 
   do {
     GameMechanics();
-    ans = inputChar("Play again? (y/n): ", 'y', 'n', "TiceTacToe::GamePlay()");
+    ans = inputChar("Play again? (y/n): ", 'y', 'n', "{GameTicTacToe.cpp}TiceTacToe::GamePlay()");
     system("clear");
   } while (ans == 'y' || ans == 'Y');
 }

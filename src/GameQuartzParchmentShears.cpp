@@ -102,7 +102,7 @@ void QuartzParchmentShears::GamePlay() {
   do {
     GameMechanics();
     ans = inputChar("Play again? (y/n): ", 'y', 'n',
-                    "QuartzParchmentShears::GamePlay()");
+                    "{GameQuartzParchmentShears.cpp}QuartzParchmentShears::GamePlay()");
     system("clear");
   } while (ans == 'y' || ans == 'Y');
 }
