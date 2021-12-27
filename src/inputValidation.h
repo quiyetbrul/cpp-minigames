@@ -7,6 +7,11 @@
 #include <string>
 #include <vector>
 
+// cinIgnore
+// Precondition:
+// Postcondition: Clears the cin buffer.
+void cinIgnore();
+
 // inputChar
 // Precondition: prompt is a string
 // Postcondition: return an input char
