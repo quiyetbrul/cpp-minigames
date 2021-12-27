@@ -1,5 +1,4 @@
 #include "InputValidation.h"
-#include <string>
 
 char inputChar(std::string prompt, std::string where) {
   char input;
