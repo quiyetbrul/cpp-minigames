@@ -61,5 +61,8 @@ double inputDouble(std::string prompt, bool posNeg, std::string where);
 double inputDouble(std::string prompt, double startRange, double endRange,
                    std::string where);
 
+// inputString
+// Precondition: prompt is a string
+// Postcondition: return an input string
 std::string inputString(std::string prompt, std::string where);
 #endif // INPUTVALIDATION_H
