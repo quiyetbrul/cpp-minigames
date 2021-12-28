@@ -17,7 +17,6 @@ void QuartzParchmentShears::DetermineWinner() {
 
   // tie
   if (playerOne.getPlayerChoice() == computer.getPlayerChoice()) {
-    // tie
     std::cout << "Tie!" << std::endl;
   }
   // player winner
