@@ -11,8 +11,13 @@
 
 // cinIgnore
 // Precondition:
-// Postcondition: Clears the cin buffer.
+// Postcondition: clears the cin buffer
 void cinIgnore();
+
+// invalidInput
+// Precondition: where is a string
+// Postcondition: returns a string
+std::string invalidInput(std::string where);
 
 // inputChar
 // Precondition: prompt is a string
@@ -72,4 +77,5 @@ double inputDouble(std::string prompt, double startRange, double endRange,
 // Precondition: prompt is a string
 // Postcondition: return an input string
 std::string inputString(std::string prompt, std::string where);
+
 #endif // INPUTVALIDATION_H

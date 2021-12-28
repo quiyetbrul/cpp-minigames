@@ -5,6 +5,10 @@ void cinIgnore() {
   std::cin.ignore(INT_MAX, '\n');
 }
 
+std::string invalidInput(std::string where) {
+  return "ERROR IN " + where + ":Invalid input. Must be ";
+}
+
 char inputChar(std::string prompt, std::string where) {
   char input;
   do {
@@ -13,9 +17,8 @@ char inputChar(std::string prompt, std::string where) {
       std::cin >> input;
       if (std::cin.fail()) {
         cinIgnore();
-        throw std::invalid_argument(
-            "ERROR IN " + where +
-            ": Invalid input. Must be a character type.\n");
+        throw std::invalid_argument(invalidInput(where) +
+                                    "a character type.\n");
       } else
         break;
     } catch (std::invalid_argument &e) {
@@ -34,10 +37,9 @@ char inputChar(std::string prompt, std::string listChars, std::string where) {
       input = tolower(input);
       if (!(std::cin.fail()) || listChars.find(input) == std::string::npos) {
         cinIgnore();
-        throw std::invalid_argument("ERROR IN " + where +
-                                    ": Invalid input. Must be a character type "
-                                    "and one of the following: " +
-                                    listChars + ".\n");
+        throw std::invalid_argument(
+            invalidInput(where) +
+            "a character type and one of the following: " + listChars + ".\n");
       } else
         break;
     } catch (std::invalid_argument &e) {
@@ -56,10 +58,10 @@ char inputChar(std::string prompt, char yes, char no, std::string where) {
       input = tolower(input);
       if (std::cin.fail() || (input != yes && input != no)) {
         cinIgnore();
-        throw std::invalid_argument("ERROR IN " + where +
-                                    ": Invalid input. Must be a character type "
-                                    "and one of the following: " +
-                                    yes + " or " + no + ".\n");
+        throw std::invalid_argument(
+            invalidInput(where) +
+            "a character type and one of the following: " + yes + " or " + no +
+            ".\n");
       } else
         break;
     } catch (std::invalid_argument &e) {
@@ -79,8 +81,7 @@ char inputChar(std::string prompt, bool alphaOrDigit, std::string where) {
           ((!alphaOrDigit && !isdigit(input)))) {
         cinIgnore();
         throw std::invalid_argument(
-            "ERROR IN " + where +
-            ": Invalid input. Must be a character type and " +
+            invalidInput(where) + "a character type and " +
             (alphaOrDigit ? "a non-digit.\n" : "a digit.\n"));
       } else
         break;
@@ -99,9 +100,7 @@ int inputInteger(std::string prompt, std::string where) {
       std::cin >> input;
       if (std::cin.fail()) {
         cinIgnore();
-        throw std::invalid_argument(
-            "ERROR IN " + where +
-            ": Invalid input. Must be an integer type.\n");
+        throw std::invalid_argument(invalidInput(where) + "an integer type.\n");
       } else
         break;
     } catch (std::invalid_argument &e) {
@@ -120,8 +119,7 @@ int inputInteger(std::string prompt, bool posNeg, std::string where) {
       if (std::cin.fail() || (posNeg && input < 0) || (!posNeg && input > 0)) {
         cinIgnore();
         throw std::invalid_argument(
-            "ERROR IN " + where +
-            ": Invalid input. Must be an integer type and " +
+            invalidInput(where) + "an integer type and " +
             (posNeg ? "a positive number.\n" : "a negative number.\n"));
       } else
         break;
@@ -141,11 +139,10 @@ int inputInteger(std::string prompt, int startRange, int endRange,
       std::cin >> input;
       if (std::cin.fail() || input < startRange || input > endRange) {
         cinIgnore();
-        throw std::invalid_argument(
-            "ERROR IN " + where +
-            ": Invalid input. Must be an integer type and between " +
-            std::to_string(startRange) + " and " + std::to_string(endRange) +
-            ".\n");
+        throw std::invalid_argument(invalidInput(where) +
+                                    "an integer type and between " +
+                                    std::to_string(startRange) + " and " +
+                                    std::to_string(endRange) + ".\n");
       } else
         break;
     } catch (std::invalid_argument &e) {
@@ -163,8 +160,7 @@ double inputDouble(std::string prompt, std::string where) {
       std::cin >> input;
       if (std::cin.fail()) {
         cinIgnore();
-        throw std::invalid_argument(
-            "ERROR IN " + where + ": Invalid input. Must be a double type.\n");
+        throw std::invalid_argument(invalidInput(where) + "a double type.\n");
       } else
         break;
     } catch (std::invalid_argument &e) {
@@ -183,8 +179,7 @@ double inputDouble(std::string prompt, bool posNeg, std::string where) {
       if (std::cin.fail() || (posNeg && input < 0) || (!posNeg && input > 0)) {
         cinIgnore();
         throw std::invalid_argument(
-            "ERROR IN " + where +
-            ": Invalid input. Must be a double type and " +
+            invalidInput(where) + "a double type and " +
             (posNeg ? "a positive number.\n" : "a negative number.\n"));
       } else
         break;
@@ -204,11 +199,10 @@ double inputDouble(std::string prompt, double startRange, double endRange,
       std::cin >> input;
       if (std::cin.fail() || input < startRange || input > endRange) {
         cinIgnore();
-        throw std::invalid_argument(
-            "ERROR IN " + where +
-            ": Invalid input. Must be a double type and between " +
-            std::to_string(startRange) + " and " + std::to_string(endRange) +
-            ".\n");
+        throw std::invalid_argument(invalidInput(where) +
+                                    "a double type and between " +
+                                    std::to_string(startRange) + " and " +
+                                    std::to_string(endRange) + ".\n");
       } else
         break;
     } catch (std::invalid_argument &e) {
@@ -226,8 +220,7 @@ std::string inputString(std::string prompt, std::string where) {
       std::cin >> input;
       if (std::cin.fail()) {
         cinIgnore();
-        throw std::invalid_argument(
-            "ERROR IN " + where + ": Invalid input. Must be a string type.\n");
+        throw std::invalid_argument(invalidInput(where) + "a string type.\n");
       } else
         break;
     } catch (std::invalid_argument &e) {
