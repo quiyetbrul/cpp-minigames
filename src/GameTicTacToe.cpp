@@ -7,14 +7,14 @@ const int SIZE = 3;
 
 TicTacToe::TicTacToe() {}
 
-void TicTacToe::Reset(int board[SIZE][SIZE]) {
+void TicTacToe::Reset() {
+
+  playerOne.reset(false);
+  playerTwo.reset(false);
+
   for (int row = 0; row < SIZE; row++) {
     for (int column = 0; column < SIZE; column++) {
       board[row][column] = 0;
-      playerOne.setIsWinner(false);
-      playerOne.setPlayerName("");
-      playerTwo.setIsWinner(false);
-      playerTwo.setPlayerName("");
     }
   }
 }
@@ -70,12 +70,6 @@ void TicTacToe::DisplayBoard(const int board[SIZE][SIZE]) {
 }
 
 void TicTacToe::GameMechanics() {
-
-  int board[SIZE][SIZE];
-
-  // reset
-  Reset(board);
-
   std::string gameName = "Tic Tac Toe";
   Welcome(gameName, true);
 
@@ -92,7 +86,7 @@ void TicTacToe::GameMechanics() {
   int row = 0;
   int column = 0;
 
-  int player = 1; // 1 represent X and -1 represent O
+  player = 1; // 1 represent X and -1 represent O
   while (true) {
     while (true) {
       if (player == 1) {
@@ -122,6 +116,7 @@ void TicTacToe::GameMechanics() {
       playerTwo.showWinner();
       break;
     } else if (IsDraw(board)) {
+      DisplayBoard(board);
       std::cout << "It's a draw!" << std::endl;
       break;
     }
@@ -137,8 +132,14 @@ void TicTacToe::GamePlay() {
   char ans = ' ';
 
   do {
+    // start game
     GameMechanics();
-    ans = inputChar("Play again? (y/n): ", 'y', 'n', "{GameTicTacToe.cpp}TiceTacToe::GamePlay()");
+
+    ans = inputChar("Play again? (y/n): ", 'y', 'n',
+                    "{GameTicTacToe.cpp}TiceTacToe::GamePlay()");
+    // reset
+    Reset();
+
     system("clear");
   } while (ans == 'y' || ans == 'Y');
 }

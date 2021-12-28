@@ -5,21 +5,25 @@
 
 class TicTacToe : public Player {
 private:
+  int board[3][3];
+  int player;
 public:
   // default constructor
+  // Precondition:
+  // Postcondition: initializes data members
   TicTacToe();
 
-  // reset board
-  // Precondition: board is a 3x3 array
-  // Postcondition: board is reset to all 0s
-  void Reset(int board[3][3]);
+  // Reset
+  // Precondition:
+  // Postcondition: initializes data members
+  void Reset();
 
-  // isWinner
+  // IsWinner
   // Precondition: board is a 3x3 array, player is an int &
   // Postcondition: returns true if there is a winner, false otherwise
   void IsWinner(const int board[3][3]);
 
-  // isDraw
+  // IsDraw
   // Precondition: board is a 3x3 array
   // Postcondition: returns true if there is a draw, false otherwise
   bool IsDraw(const int board[3][3]);
@@ -29,12 +33,12 @@ public:
   // Postcondition: board is displayed
   void DisplayBoard(const int board[3][3]);
 
-  // game mechanics
+  // GameMechanics
   // Precondition:
   // Postcondition: game mechanics are run
   void GameMechanics();
 
-  // game play
+  // GamePlay
   // Precondition:
   // Postcondition: game play is run
   void GamePlay();
