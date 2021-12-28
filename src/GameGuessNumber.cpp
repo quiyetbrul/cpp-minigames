@@ -156,7 +156,6 @@ void GuessNumber::GameMechanics() {
 
 void GuessNumber::GamePlay() {
   system("clear");
-
   char ans = ' ';
 
   do {

@@ -128,7 +128,6 @@ void TicTacToe::GameMechanics() {
 
 void TicTacToe::GamePlay() {
   system("clear");
-
   char ans = ' ';
 
   do {
