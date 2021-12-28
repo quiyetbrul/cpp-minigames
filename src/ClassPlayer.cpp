@@ -15,6 +15,14 @@ Player::Player(std::string playerName, int playerChoice, int playerScore,
   this->isWinner = isWinner;
 }
 
+void Player::reset(bool keepScore) {
+  setPlayerName(" ");
+  setPlayerChoice(0);
+  setIsWinner(false);
+  if (!keepScore)
+    setPlayerScore(0);
+}
+
 void Player::setPlayerName(std::string playerName) {
   this->playerName = playerName;
 }
@@ -38,7 +46,8 @@ void Player::setIsWinner(bool isWinner) { this->isWinner = isWinner; }
 bool Player::getIsWinner() { return isWinner; }
 
 int Player::playerPrompt(std::string prompt, int startRange, int endRange) {
-  int input = inputInteger(getPlayerName() + prompt, startRange, endRange, "{ClassPlayer.cpp}Player::playerPrompt()");
+  int input = inputInteger(getPlayerName() + prompt, startRange, endRange,
+                           "{ClassPlayer.cpp}Player::playerPrompt()");
   return input;
 }
 

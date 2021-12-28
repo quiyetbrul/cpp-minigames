@@ -24,6 +24,11 @@ public:
   Player(std::string playerName, int playerChoice, int playerScore,
          bool isWinner);
 
+  // reset player object
+  // Precondition: keepScore is true if player score should not be reset
+  // Postcondition: resets data members
+  void reset(bool keepScore);
+  
   // setPlayerChoice
   // Precondition: playerName is a valid string
   // Postcondition: sets the playerName data member
