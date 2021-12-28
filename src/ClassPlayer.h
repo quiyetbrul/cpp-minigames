@@ -72,6 +72,7 @@ public:
   // playerPrompt
   // Precondition: prompt is a valid string, startRange and endRange are
   // integers Postcondition: prompts the user for their choice
+  // Postcondition: returns the playerChoice data member
   int playerPrompt(std::string prompt, int startRange, int endRange);
 
   // showChoice
@@ -85,9 +86,8 @@ public:
   void addScore();
 
   // showResult
-  // Precondition: playerWins is a boolean, hasScore determines if the game
-  // has scoring functionality Postcondition: displays the result of the
-  // game
+  // Precondition: 
+  // Postcondition: displays the result of the game
   void showWinner();
 
   // showScore
@@ -97,7 +97,7 @@ public:
 
   // generateComputerChoice
   // Precondition: endRange is an integer
-  // Postcondition: generates a random number between 1 to x
+  // Postcondition: generates a random number between ranges
   int randomNumber(int startRange, int endRange);
 
   // intBinarySearch
