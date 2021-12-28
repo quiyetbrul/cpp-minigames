@@ -4,7 +4,7 @@
 
 # Compiler settings - Can be customized.
 CC = clang++
-CXXFLAGS = -std=c++20 -Wall -Wc++11-extensions
+CXXFLAGS = -std=c++20 -Wall -Wc++11-extensions -Wdeprecated
 LDFLAGS = -g
 
 # Makefile settings - Can be customized.
