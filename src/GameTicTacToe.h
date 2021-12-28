@@ -7,6 +7,15 @@ class TicTacToe : public Player {
 private:
   int board[3][3];
   int player;
+  int row;
+  int column;
+  int sumRow;
+  int sumColumn;
+  int sumDiagonalRight;
+  int sumDiagonalLeft;
+  int startRange;
+  int endRange;
+
 public:
   // default constructor
   // Precondition:
@@ -21,17 +30,17 @@ public:
   // IsWinner
   // Precondition: board is a 3x3 array, player is an int &
   // Postcondition: returns true if there is a winner, false otherwise
-  void IsWinner(const int board[3][3]);
+  void IsWinner();
 
   // IsDraw
   // Precondition: board is a 3x3 array
   // Postcondition: returns true if there is a draw, false otherwise
-  bool IsDraw(const int board[3][3]);
+  bool IsDraw();
 
   // displayBoard
   // Precondition: board is a 3x3 array
   // Postcondition: board is displayed
-  void DisplayBoard(const int board[3][3]);
+  void DisplayBoard();
 
   // GameMechanics
   // Precondition:
