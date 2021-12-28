@@ -45,9 +45,9 @@ void Player::setIsWinner(bool isWinner) { this->isWinner = isWinner; }
 
 bool Player::getIsWinner() { return isWinner; }
 
-int Player::playerPrompt(std::string prompt, int startRange, int endRange) {
+int Player::playerPrompt(std::string prompt, int startRange, int endRange, std::string where) {
   int input = inputInteger(getPlayerName() + prompt, startRange, endRange,
-                           "{ClassPlayer.cpp}Player::playerPrompt()");
+                           where);
   return input;
 }
 

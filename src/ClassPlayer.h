@@ -28,7 +28,7 @@ public:
   // Precondition: keepScore is true if player score should not be reset
   // Postcondition: resets data members
   void reset(bool keepScore);
-  
+
   // setPlayerChoice
   // Precondition: playerName is a valid string
   // Postcondition: sets the playerName data member
@@ -73,7 +73,8 @@ public:
   // Precondition: prompt is a valid string, startRange and endRange are
   // integers Postcondition: prompts the user for their choice
   // Postcondition: returns the playerChoice data member
-  int playerPrompt(std::string prompt, int startRange, int endRange);
+  int playerPrompt(std::string prompt, int startRange, int endRange,
+                   std::string where);
 
   // showChoice
   // Precondition:
@@ -85,8 +86,8 @@ public:
   // Postcondition: adds a point to the player's score
   void addScore();
 
-  // showResult
-  // Precondition: 
+  // showWinner
+  // Precondition:
   // Postcondition: displays the result of the game
   void showWinner();
 
