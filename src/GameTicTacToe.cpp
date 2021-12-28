@@ -8,7 +8,6 @@ const int SIZE = 3;
 TicTacToe::TicTacToe() {}
 
 void TicTacToe::Reset() {
-
   playerOne.reset(false);
   playerTwo.reset(false);
 
