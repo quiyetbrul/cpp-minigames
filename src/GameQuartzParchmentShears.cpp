@@ -3,6 +3,8 @@
 static Player playerOne;
 static Player computer;
 
+const std::string FILENAME = "{GameQuartzParchmentShears.cpp}";
+
 QuartzParchmentShears::QuartzParchmentShears() {}
 
 void QuartzParchmentShears::Reset() {
@@ -79,8 +81,9 @@ void QuartzParchmentShears::GameMechanics() {
   std::string prompt = ", enter your choice: ";
 
   // get/set player choice
-  playerOne.setPlayerChoice(
-      playerOne.playerPrompt(prompt, startRange, endRange));
+  playerOne.setPlayerChoice(playerOne.playerPrompt(
+      prompt, startRange, endRange,
+      FILENAME + "QuartzParchmentShears::GameMechanics()"));
 
   // generate computer choice
   computer.setPlayerChoice(computer.randomNumber(startRange, endRange));
@@ -101,13 +104,12 @@ void QuartzParchmentShears::GamePlay() {
     // start game
     GameMechanics();
 
-    ans = inputChar(
-        "Play again? (y/n): ", 'y', 'n',
-        "{GameQuartzParchmentShears.cpp}QuartzParchmentShears::GamePlay()");
+    ans = inputChar("Play again? (y/n): ", 'y', 'n',
+                    FILENAME + "QuartzParchmentShears::GamePlay()");
 
     // reset game
     Reset();
-    
+
     system("clear");
   } while (ans == 'y' || ans == 'Y');
 }

@@ -3,13 +3,31 @@
 static Player playerOne;
 static Player playerTwo;
 
+const std::string FILENAME = "{GameTicTacToe.cpp}";
+
 const int SIZE = 3;
 
-TicTacToe::TicTacToe() {}
+TicTacToe::TicTacToe() {
+  player = 1;
+  row = 0;
+  column = 0;
+  sumRow = 0;
+  sumColumn = 0;
+  sumDiagonalRight = 0;
+  sumDiagonalLeft = 0;
+  startRange = 0;
+  endRange = 2;
+}
 
 void TicTacToe::Reset() {
   playerOne.reset(false);
   playerTwo.reset(false);
+
+  player = 1;
+  sumRow = 0;
+  sumColumn = 0;
+  sumDiagonalRight = 0;
+  sumDiagonalLeft = 0;
 
   for (int row = 0; row < SIZE; row++) {
     for (int column = 0; column < SIZE; column++) {
@@ -18,12 +36,7 @@ void TicTacToe::Reset() {
   }
 }
 
-void TicTacToe::IsWinner(const int board[SIZE][SIZE]) {
-  int sumRow = 0;
-  int sumColumn = 0;
-  int sumDiagonalRight = 0;
-  int sumDiagonalLeft = 0;
-
+void TicTacToe::IsWinner() {
   for (int row = 0; row < SIZE; row++) {
     for (int column = 0; column < SIZE; column++) {
       // add rows
@@ -49,7 +62,7 @@ void TicTacToe::IsWinner(const int board[SIZE][SIZE]) {
   } // end nested outer for loop
 }
 
-bool TicTacToe::IsDraw(const int board[SIZE][SIZE]) {
+bool TicTacToe::IsDraw() {
   for (int row = 0; row < SIZE; row++)
     for (int column = 0; column < SIZE; column++)
       if (board[row][column] == 0)
@@ -57,7 +70,7 @@ bool TicTacToe::IsDraw(const int board[SIZE][SIZE]) {
   return true;
 }
 
-void TicTacToe::DisplayBoard(const int board[SIZE][SIZE]) {
+void TicTacToe::DisplayBoard() {
   for (int row = 0; row < SIZE; row++) {
     for (int column = 0; column < SIZE; column++) {
       std::cout << ((board[row][column] == 1)    ? "[X]"
@@ -75,25 +88,28 @@ void TicTacToe::GameMechanics() {
   playerOne.setPlayerName("Player One");
   playerTwo.setPlayerName("Player Two");
 
-  DisplayBoard(board);
+  DisplayBoard();
 
-  int startRange = 0;
-  int endRange = 2;
   std::string promptRow = " choose row: ";
   std::string promptColumn = " choose column: ";
   std::string ERROR = "ERROR: Square has been played. Choose again.\n";
   int row = 0;
   int column = 0;
 
-  player = 1; // 1 represent X and -1 represent O
   while (true) {
     while (true) {
       if (player == 1) {
-        row = playerOne.playerPrompt(promptRow, startRange, endRange);
-        column = playerOne.playerPrompt(promptColumn, startRange, endRange);
+        row = playerOne.playerPrompt(promptRow, startRange, endRange,
+                                     FILENAME + "TicTacToe::GameMechanics()");
+        column =
+            playerOne.playerPrompt(promptColumn, startRange, endRange,
+                                   FILENAME + "TicTacToe::GameMechanics()");
       } else if (player == -1) {
-        row = playerTwo.playerPrompt(promptRow, startRange, endRange);
-        column = playerTwo.playerPrompt(promptColumn, startRange, endRange);
+        row = playerTwo.playerPrompt(promptRow, startRange, endRange,
+                                     FILENAME + "TicTacToe::GameMechanics()");
+        column =
+            playerTwo.playerPrompt(promptColumn, startRange, endRange,
+                                   FILENAME + "TicTacToe::GameMechanics()");
       }
 
       if (board[row][column] == 0) {
@@ -104,23 +120,23 @@ void TicTacToe::GameMechanics() {
       }
     }
 
-    IsWinner(board);
+    IsWinner();
 
     if (playerOne.getIsWinner()) {
-      DisplayBoard(board);
+      DisplayBoard();
       playerOne.showWinner();
       break;
     } else if (playerTwo.getIsWinner()) {
-      DisplayBoard(board);
+      DisplayBoard();
       playerTwo.showWinner();
       break;
-    } else if (IsDraw(board)) {
-      DisplayBoard(board);
+    } else if (IsDraw()) {
+      DisplayBoard();
       std::cout << "It's a draw!" << std::endl;
       break;
     }
 
-    DisplayBoard(board);
+    DisplayBoard();
     player *= -player;
   }
 }
@@ -134,7 +150,7 @@ void TicTacToe::GamePlay() {
     GameMechanics();
 
     ans = inputChar("Play again? (y/n): ", 'y', 'n',
-                    "{GameTicTacToe.cpp}TiceTacToe::GamePlay()");
+                    FILENAME + "TiceTacToe::GamePlay()");
     // reset
     Reset();
 
