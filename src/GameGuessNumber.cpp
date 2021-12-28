@@ -34,13 +34,10 @@ void GuessNumber::setNumberOfGuess(int numberOfGuess) {
 }
 int GuessNumber::getNumberOfGuess() { return playerGuess; }
 
-int GuessNumber::NumberOfGuess() { return 0; }
-
 void GuessNumber::GuessHistory() {
   // right guess
   if (playerGuess == numberToGuess) {
-    // NumberOfGuess();
-    setNumberOfGuess(numberOfGuess + 1);
+    ++numberOfGuess;
     std::cout << playerName << " guessed " << playerGuess << " in "
               << numberOfGuess << " guesses." << std::endl;
     return;
@@ -59,7 +56,7 @@ void GuessNumber::GuessHistory() {
 
   GuessRange();
 
-  setNumberOfGuess(numberOfGuess + 1);
+  ++numberOfGuess;
 }
 
 void GuessNumber::PrintGuessHistory() {

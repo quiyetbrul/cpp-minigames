@@ -25,14 +25,15 @@ public:
   // Postcondition: initializes data members
   void Reset();
 
+  // setNumberOfGuess
+  // Precondition: numberOfGuess is an integer
+  // Postcondition: sets the numberOfGuess data member
   void setNumberOfGuess(int numberToGuess);
-  int getNumberOfGuess();
 
-
-  // NumberOfGuess
-  // Precondition: 
+  // getNumberOfGuess
+  // Precondition:
   // Postcondition: returns the numberOfGuess data member
-  int NumberOfGuess();
+  int getNumberOfGuess();
 
   // PrintGuessHistory
   // Precondition:
