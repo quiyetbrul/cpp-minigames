@@ -7,6 +7,10 @@ const std::string FILENAME = "{GameTicTacToe.cpp}";
 
 const int SIZE = 3;
 
+TicTacToe::~TicTacToe() {
+  // destructor
+}
+
 TicTacToe::TicTacToe() {
   player = 1;
   row = 0;

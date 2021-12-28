@@ -17,6 +17,11 @@ private:
   int endRange;
 
 public:
+  // destructor
+  // Precondition:
+  // Postcondition:
+  ~TicTacToe();
+  
   // default constructor
   // Precondition:
   // Postcondition: initializes data members

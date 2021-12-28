@@ -1,5 +1,9 @@
 #include "ClassPlayer.h"
 
+Player::~Player() {
+  // destructor
+}
+
 Player::Player() {
   playerName = "";
   playerChoice = 0;

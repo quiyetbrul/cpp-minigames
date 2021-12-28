@@ -15,6 +15,11 @@ private:
   int numberOfGuess;
 
 public:
+  // destructor
+  // Precondition:
+  // Postcondition:
+  ~GuessNumber();
+
   // default constructor
   // Precondition:
   // Postcondition: initializes data members

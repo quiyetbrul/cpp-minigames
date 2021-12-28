@@ -6,6 +6,11 @@
 class QuartzParchmentShears : public Player {
 private:
 public:
+  // destructor
+  // Precondition:
+  // Postcondition:
+  ~QuartzParchmentShears();
+  
   // default constructor
   // Precondition:
   // Postcondition: initializes data members

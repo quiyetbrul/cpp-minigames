@@ -6,6 +6,10 @@ static Player computer;
 
 const std::string FILENAME = "{GameGuessNumber.cpp}";
 
+GuessNumber::~GuessNumber() {
+  // destructor
+}
+
 GuessNumber::GuessNumber() {
   player = 0;
   numberOfGuess = 0;
@@ -32,6 +36,7 @@ void GuessNumber::Reset() {
 void GuessNumber::setNumberOfGuess(int numberOfGuess) {
   this->numberOfGuess = numberOfGuess;
 }
+
 int GuessNumber::getNumberOfGuess() { return playerGuess; }
 
 void GuessNumber::GuessHistory() {

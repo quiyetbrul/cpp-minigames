@@ -5,6 +5,10 @@ static Player computer;
 
 const std::string FILENAME = "{GameQuartzParchmentShears.cpp}";
 
+QuartzParchmentShears::~QuartzParchmentShears() {
+  // destructor
+}
+
 QuartzParchmentShears::QuartzParchmentShears() {}
 
 void QuartzParchmentShears::Reset() {

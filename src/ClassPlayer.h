@@ -13,6 +13,11 @@ protected:
   bool isWinner;
 
 public:
+  // destructor
+  // Precondition:
+  // Postcondition:
+  ~Player();
+  
   // default constructor
   // Precondition:
   // Postcondition: initializes data members

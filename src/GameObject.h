@@ -3,8 +3,12 @@
 
 class GameObject {
 protected:
-
 public:
+  // destructor
+  // Precondition:
+  // Postcondition:
+  ~GameObject();
+
   // default constructor
   // Precondition:
   // Postcondition: initializes data members
