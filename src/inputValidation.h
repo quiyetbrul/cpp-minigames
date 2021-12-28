@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -15,9 +16,9 @@
 void cinIgnore();
 
 // invalidInput
-// Precondition: where is a string
+// Precondition: where is a string, what is a string
 // Postcondition: returns a string
-std::string invalidInput(std::string where);
+std::string invalidInput(std::string where, std::string what);
 
 // inputChar
 // Precondition: prompt is a string
