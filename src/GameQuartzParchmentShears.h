@@ -7,14 +7,26 @@ class QuartzParchmentShears : public Player {
 private:
 public:
   // default constructor
+  // Precondition:
+  // Postcondition: initializes data members
   QuartzParchmentShears();
 
-  // game mechanics
+  // Reset
+  // Precondition:
+  // Postcondition: initializes data members
+  void Reset();
+
+  // DetermineWinner
+  // Precondition:
+  // Postcondition: returns the winner
+  void DetermineWinner();
+
+  // GameMechanics
   // Precondition:
   // Postcondition: game mechanics are run
   void GameMechanics();
 
-  // game play
+  // GamePlay
   // Precondition:
   // Postcondition: game play is run
   void GamePlay();
