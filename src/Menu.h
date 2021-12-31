@@ -4,6 +4,7 @@
 #include "GameGuessNumber.h"
 #include "GameQuartzParchmentShears.h"
 #include "GameTicTacToe.h"
+#include "InputValidation.h"
 
 void Menu();
 

@@ -1,6 +1,4 @@
 #include "Menu.h"
-#include "InputValidation.h"
-
 const std::string FILENAME = "{Menu.cpp}";
 
 void Menu() {
@@ -18,7 +16,7 @@ void Menu() {
     std::cout << "3. Guess Number" << std::endl;
     std::cout << "0. Quit" << std::endl;
     std::cout << "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=" << std::endl;
-    int choice = inputInteger("Enter your choice: ", 0, 3, FILENAME + "Menu()");
+    int choice = inputInteger("Enter your choice: ", 0, 4, FILENAME + "Menu()");
     cinIgnore();
 
     switch (choice) {
@@ -39,4 +37,4 @@ void Menu() {
                 << " =-=-= " << std::endl;
     }
   } while (true);
-}
+} // -----------------------------------------------------------------------------
