@@ -5,6 +5,9 @@
 
 class QuartzParchmentShears : public Player {
 private:
+  int rockRating;
+  int paperRating;
+  int scissorsRating;
   int startRange;
   int endRange;
 
@@ -22,7 +25,12 @@ public:
   // showChoice
   // Precondition: player is an integer
   // Postcondition: displays the player's choice
-  void showChoice(int player);
+  void ShowChoice(int player);
+
+  // CalculateComputerChoice
+  // Precondition:
+  // Postcondition: returns an integer based on frequency of player choices
+  int CalculateComputerChoice();
 
   // Reset
   // Precondition:
