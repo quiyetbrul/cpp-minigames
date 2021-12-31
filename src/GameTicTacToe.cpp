@@ -158,6 +158,5 @@ void TicTacToe::GamePlay() {
                     FILENAME + "TiceTacToe::GamePlay()");
     // reset
     Reset();
-
   } while (ans == 'y' || ans == 'Y');
 } // -----------------------------------------------------------------------------
