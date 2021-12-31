@@ -8,7 +8,7 @@ const std::string FILENAME = "{GameTicTacToe.cpp}";
 const int SIZE = 3;
 
 TicTacToe::~TicTacToe() {
-  // destructor
+  std::cout<<"Destructor called"<<std::endl;
 } // -----------------------------------------------------------------------------
 
 TicTacToe::TicTacToe() {
@@ -146,10 +146,11 @@ void TicTacToe::GameMechanics() {
 } // -----------------------------------------------------------------------------
 
 void TicTacToe::GamePlay() {
-  system("clear");
   char ans = ' ';
 
   do {
+    system("clear");
+
     // start game
     GameMechanics();
 
@@ -158,6 +159,5 @@ void TicTacToe::GamePlay() {
     // reset
     Reset();
 
-    system("clear");
   } while (ans == 'y' || ans == 'Y');
 } // -----------------------------------------------------------------------------
