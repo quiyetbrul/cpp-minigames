@@ -69,12 +69,13 @@ void Player::addScore() { setPlayerScore(getPlayerScore() + 1); }
 // -----------------------------------------------------------------------------
 
 void Player::showWinner() {
-  std::cout << getPlayerName() << (getIsWinner() ? " wins!" : " lost!")
-            << std::endl;
+  std::cout << std::left << std::setw(10) << getPlayerName()
+            << (getIsWinner() ? " wins!" : " lost!") << std::endl;
 } // -----------------------------------------------------------------------------
 
 void Player::showScore() {
-  std::cout << getPlayerName() << " score: " << getPlayerScore() << std::endl;
+  std::cout << std::left << std::setw(10) << getPlayerName()
+            << " score: " << getPlayerScore() << std::endl;
 } // -----------------------------------------------------------------------------
 
 int Player::randomNumber(int startRange, int endRange) {
