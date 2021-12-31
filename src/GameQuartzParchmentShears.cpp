@@ -7,14 +7,15 @@ const std::string FILENAME = "{GameQuartzParchmentShears.cpp}";
 
 QuartzParchmentShears::~QuartzParchmentShears() {
   // destructor
-}
+} // -----------------------------------------------------------------------------
 
 QuartzParchmentShears::QuartzParchmentShears() {}
+// -----------------------------------------------------------------------------
 
 void QuartzParchmentShears::Reset() {
   playerOne.reset(true);
   computer.reset(true);
-}
+} // -----------------------------------------------------------------------------
 
 void QuartzParchmentShears::DetermineWinner() {
   // show player's and computer's choices
@@ -65,7 +66,7 @@ void QuartzParchmentShears::DetermineWinner() {
   // show score
   playerOne.showScore();
   computer.showScore();
-}
+} // -----------------------------------------------------------------------------
 
 void QuartzParchmentShears::GameMechanics() {
   std::string gameName = "Quarts Parchment Shears";
@@ -98,7 +99,7 @@ void QuartzParchmentShears::GameMechanics() {
   DetermineWinner();
 
   std::cout << std::endl;
-}
+} // -----------------------------------------------------------------------------
 
 void QuartzParchmentShears::GamePlay() {
   system("clear");
@@ -116,4 +117,4 @@ void QuartzParchmentShears::GamePlay() {
 
     system("clear");
   } while (ans == 'y' || ans == 'Y');
-}
+} // -----------------------------------------------------------------------------
