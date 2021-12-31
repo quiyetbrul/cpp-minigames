@@ -6,7 +6,7 @@ static Player computer;
 const std::string FILENAME = "{GameGuessNumber.cpp}";
 
 GuessNumber::~GuessNumber() {
-  // destructor
+  std::cout << "Destructor called" << std::endl;
 } // -----------------------------------------------------------------------------
 
 GuessNumber::GuessNumber() {
@@ -97,7 +97,6 @@ void GuessNumber::GameMechanics() {
   Welcome(gameName, false);
   std::cout << std::endl;
 
-  // set players' names
   computer.setPlayerName("Computer");
   playerOne.setPlayerName("Player One");
 
@@ -157,10 +156,11 @@ void GuessNumber::GameMechanics() {
 } // -----------------------------------------------------------------------------
 
 void GuessNumber::GamePlay() {
-  system("clear");
   char ans = ' ';
 
   do {
+    system("clear");
+
     // start game
     GameMechanics();
 
@@ -169,7 +169,5 @@ void GuessNumber::GamePlay() {
 
     // reset game
     Reset();
-
-    system("clear");
   } while (ans == 'y' || ans == 'Y');
 } // -----------------------------------------------------------------------------
