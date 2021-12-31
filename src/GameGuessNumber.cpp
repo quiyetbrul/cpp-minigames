@@ -1,5 +1,4 @@
 #include "GameGuessNumber.h"
-#include "InputValidation.h"
 
 static Player playerOne;
 static Player computer;
@@ -8,7 +7,7 @@ const std::string FILENAME = "{GameGuessNumber.cpp}";
 
 GuessNumber::~GuessNumber() {
   // destructor
-}
+} // -----------------------------------------------------------------------------
 
 GuessNumber::GuessNumber() {
   player = 0;
@@ -17,7 +16,7 @@ GuessNumber::GuessNumber() {
   numberToGuess = 0;
   startRange = 1;
   endRange = 100;
-}
+} // -----------------------------------------------------------------------------
 
 void GuessNumber::Reset() {
   playerOne.reset(false);
@@ -31,13 +30,14 @@ void GuessNumber::Reset() {
   endRange = 100;
 
   guessHistory.clear();
-}
+} // -----------------------------------------------------------------------------
 
 void GuessNumber::setNumberOfGuess(int numberOfGuess) {
   this->numberOfGuess = numberOfGuess;
-}
+} // -----------------------------------------------------------------------------
 
 int GuessNumber::getNumberOfGuess() { return playerGuess; }
+// -----------------------------------------------------------------------------
 
 void GuessNumber::GuessHistory() {
   // right guess
@@ -49,8 +49,7 @@ void GuessNumber::GuessHistory() {
   }
 
   // already guessed
-  if (std::find(guessHistory.begin(), guessHistory.end(), playerGuess) !=
-      guessHistory.end()) {
+  if (find(guessHistory, playerGuess)) {
     std::cout << playerName << " already guessed " << playerGuess << std::endl;
     return;
   }
@@ -62,22 +61,15 @@ void GuessNumber::GuessHistory() {
   GuessRange();
 
   ++numberOfGuess;
-}
+} // -----------------------------------------------------------------------------
 
 void GuessNumber::PrintGuessHistory() {
   std::cout << "Guess history:" << std::endl;
 
-  int col = 0;
-  for (auto i : guessHistory) {
-    std::cout << std::left << std::setw(5) << i << " ";
-    // each row has 10 columns
-    if (++col % 10 == 0) {
-      std::cout << std::endl;
-    }
-  }
+  std::cout << guessHistory << std::endl;
 
   std::cout << std::endl;
-}
+} // -----------------------------------------------------------------------------
 
 void GuessNumber::GuessRange() {
   // too high
@@ -98,7 +90,7 @@ void GuessNumber::GuessRange() {
     std::cout << playerName << " guessed out of range." << std::endl;
     return;
   }
-}
+} // -----------------------------------------------------------------------------
 
 void GuessNumber::GameMechanics() {
   std::string gameName = "Guess Number";
@@ -162,7 +154,7 @@ void GuessNumber::GameMechanics() {
       std::cout << std::endl;
     }
   }
-}
+} // -----------------------------------------------------------------------------
 
 void GuessNumber::GamePlay() {
   system("clear");
@@ -180,4 +172,4 @@ void GuessNumber::GamePlay() {
 
     system("clear");
   } while (ans == 'y' || ans == 'Y');
-}
+} // -----------------------------------------------------------------------------
