@@ -3,11 +3,11 @@
 void cinIgnore() {
   std::cin.clear();
   std::cin.ignore(INT_MAX, '\n');
-}
+} // -----------------------------------------------------------------------------
 
 std::string invalidInput(std::string where, std::string what) {
   return "\n***ERROR IN " + where + "***\nInvalid input. Must be " + what + ".\n";
-}
+} // -----------------------------------------------------------------------------
 
 char inputChar(std::string prompt, std::string where) {
   char input;
@@ -15,6 +15,7 @@ char inputChar(std::string prompt, std::string where) {
     std::cout << prompt;
     try {
       std::cin >> input;
+      input = tolower(input);
       if (std::cin.fail()) {
         cinIgnore();
         throw std::invalid_argument(invalidInput(where, "a character type."));
@@ -25,7 +26,7 @@ char inputChar(std::string prompt, std::string where) {
     }
   } while (true);
   return input;
-}
+} // -----------------------------------------------------------------------------
 
 char inputChar(std::string prompt, std::string listChars, std::string where) {
   char input;
@@ -45,7 +46,7 @@ char inputChar(std::string prompt, std::string listChars, std::string where) {
     }
   } while (true);
   return input;
-}
+} // -----------------------------------------------------------------------------
 
 char inputChar(std::string prompt, char yes, char no, std::string where) {
   char input;
@@ -57,7 +58,7 @@ char inputChar(std::string prompt, char yes, char no, std::string where) {
       if (std::cin.fail() || (input != yes && input != no)) {
         cinIgnore();
         throw std::invalid_argument(invalidInput(
-            where, " character type and one of the following: " +
+            where, "a character type and one of the following: " +
                        std::string(1, yes) + " or " + std::string(1, no)));
       } else
         break;
@@ -66,7 +67,7 @@ char inputChar(std::string prompt, char yes, char no, std::string where) {
     }
   } while (true);
   return input;
-}
+} // -----------------------------------------------------------------------------
 
 char inputChar(std::string prompt, bool alphaOrDigit, std::string where) {
   char input;
@@ -74,6 +75,7 @@ char inputChar(std::string prompt, bool alphaOrDigit, std::string where) {
     std::cout << prompt;
     try {
       std::cin >> input;
+      input = tolower(input);
       if (std::cin.fail() || (alphaOrDigit && !isalpha(input)) ||
           ((!alphaOrDigit && !isdigit(input)))) {
         cinIgnore();
@@ -88,7 +90,7 @@ char inputChar(std::string prompt, bool alphaOrDigit, std::string where) {
     }
   } while (true);
   return input;
-}
+} // -----------------------------------------------------------------------------
 
 int inputInteger(std::string prompt, std::string where) {
   int input;
@@ -106,7 +108,7 @@ int inputInteger(std::string prompt, std::string where) {
     }
   } while (true);
   return input;
-}
+} // -----------------------------------------------------------------------------
 
 int inputInteger(std::string prompt, bool posNeg, std::string where) {
   int input;
@@ -126,7 +128,7 @@ int inputInteger(std::string prompt, bool posNeg, std::string where) {
     }
   } while (true);
   return input;
-}
+} // -----------------------------------------------------------------------------
 
 int inputInteger(std::string prompt, int startRange, int endRange,
                  std::string where) {
@@ -147,7 +149,7 @@ int inputInteger(std::string prompt, int startRange, int endRange,
     }
   } while (true);
   return input;
-}
+} // -----------------------------------------------------------------------------
 
 double inputDouble(std::string prompt, std::string where) {
   double input;
@@ -165,7 +167,7 @@ double inputDouble(std::string prompt, std::string where) {
     }
   } while (true);
   return input;
-}
+} // -----------------------------------------------------------------------------
 
 double inputDouble(std::string prompt, bool posNeg, std::string where) {
   double input;
@@ -185,7 +187,7 @@ double inputDouble(std::string prompt, bool posNeg, std::string where) {
     }
   } while (true);
   return input;
-}
+} // -----------------------------------------------------------------------------
 
 double inputDouble(std::string prompt, double startRange, double endRange,
                    std::string where) {
@@ -206,7 +208,7 @@ double inputDouble(std::string prompt, double startRange, double endRange,
     }
   } while (true);
   return input;
-}
+} // -----------------------------------------------------------------------------
 
 std::string inputString(std::string prompt, std::string where) {
   std::string input;
@@ -224,4 +226,4 @@ std::string inputString(std::string prompt, std::string where) {
     }
   } while (true);
   return input;
-}
+} // -----------------------------------------------------------------------------
