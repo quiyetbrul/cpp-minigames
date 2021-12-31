@@ -9,7 +9,7 @@ const int SIZE = 3;
 
 TicTacToe::~TicTacToe() {
   // destructor
-}
+} // -----------------------------------------------------------------------------
 
 TicTacToe::TicTacToe() {
   player = 1;
@@ -21,7 +21,7 @@ TicTacToe::TicTacToe() {
   sumDiagonalLeft = 0;
   startRange = 0;
   endRange = 2;
-}
+} // -----------------------------------------------------------------------------
 
 void TicTacToe::Reset() {
   playerOne.reset(false);
@@ -38,7 +38,7 @@ void TicTacToe::Reset() {
       board[row][column] = 0;
     }
   }
-}
+} // -----------------------------------------------------------------------------
 
 void TicTacToe::IsWinner() {
   for (int row = 0; row < SIZE; row++) {
@@ -64,7 +64,7 @@ void TicTacToe::IsWinner() {
         sumDiagonalRight == -SIZE)
       playerTwo.setIsWinner(true);
   } // end nested outer for loop
-}
+} // -----------------------------------------------------------------------------
 
 bool TicTacToe::IsDraw() {
   for (int row = 0; row < SIZE; row++)
@@ -72,7 +72,7 @@ bool TicTacToe::IsDraw() {
       if (board[row][column] == 0)
         return false;
   return true;
-}
+} // -----------------------------------------------------------------------------
 
 void TicTacToe::DisplayBoard() {
   for (int row = 0; row < SIZE; row++) {
@@ -83,7 +83,7 @@ void TicTacToe::DisplayBoard() {
     }
     std::cout << std::endl;
   }
-}
+} // -----------------------------------------------------------------------------
 
 void TicTacToe::GameMechanics() {
   std::string gameName = "Tic Tac Toe";
@@ -143,7 +143,7 @@ void TicTacToe::GameMechanics() {
     DisplayBoard();
     player *= -player;
   }
-}
+} // -----------------------------------------------------------------------------
 
 void TicTacToe::GamePlay() {
   system("clear");
@@ -160,4 +160,4 @@ void TicTacToe::GamePlay() {
 
     system("clear");
   } while (ans == 'y' || ans == 'Y');
-}
+} // -----------------------------------------------------------------------------
