@@ -5,26 +5,39 @@
 
 class QuartzParchmentShears : public Player {
 private:
+  int startRange;
+  int endRange;
+
 public:
   // destructor
   // Precondition:
   // Postcondition:
   ~QuartzParchmentShears();
-  
+
   // default constructor
   // Precondition:
   // Postcondition: initializes data members
   QuartzParchmentShears();
 
+  // showChoice
+  // Precondition: player is an integer
+  // Postcondition: displays the player's choice
+  void showChoice(int player);
+
   // Reset
   // Precondition:
   // Postcondition: initializes data members
-  void Reset();
+  void Reset(bool keepScore);
 
   // DetermineWinner
   // Precondition:
-  // Postcondition: returns the winner
+  // Postcondition: determines the winner
   void DetermineWinner();
+
+  // WinnerMechanics
+  // Precondition: player is an integer
+  // Postcondition: handles the winner's mechanics
+  void WinnerMechanics(int player);
 
   // GameMechanics
   // Precondition:

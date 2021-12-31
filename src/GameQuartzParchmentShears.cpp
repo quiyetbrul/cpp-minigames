@@ -6,36 +6,63 @@ static Player computer;
 const std::string FILENAME = "{GameQuartzParchmentShears.cpp}";
 
 QuartzParchmentShears::~QuartzParchmentShears() {
-  // destructor
+  std::cout << "Destructor called" << std::endl;
 } // -----------------------------------------------------------------------------
 
-QuartzParchmentShears::QuartzParchmentShears() {}
-// -----------------------------------------------------------------------------
-
-void QuartzParchmentShears::Reset() {
-  playerOne.reset(true);
-  computer.reset(true);
+QuartzParchmentShears::QuartzParchmentShears() {
+  playerName = "";
+  startRange = 1;
+  endRange = 3;
 } // -----------------------------------------------------------------------------
 
-void QuartzParchmentShears::DetermineWinner() {
-  // show player's and computer's choices
-  playerOne.showChoice();
-  computer.showChoice();
+void QuartzParchmentShears::Reset(bool keepScore) {
+  playerOne.reset(keepScore);
+  computer.reset(keepScore);
+  startRange = 1;
+  endRange = 3;
+} // -----------------------------------------------------------------------------
 
-  // tie
-  if (playerOne.getPlayerChoice() == computer.getPlayerChoice()) {
-    std::cout << "Tie!" << std::endl;
+void QuartzParchmentShears::showChoice(int player) {
+  playerName =
+      player == 1 ? playerOne.getPlayerName() : computer.getPlayerName();
+
+  switch (player == 1 ? playerOne.getPlayerChoice()
+                      : computer.getPlayerChoice()) {
+  case 1:
+    std::cout << playerName << " chose: Rock" << std::endl;
+    break;
+  case 2:
+    std::cout << playerName << " chose: Paper" << std::endl;
+    break;
+  case 3:
+    std::cout << playerName << " chose: Scissors" << std::endl;
+    break;
+  default:
+    std::cout << playerName << " chose: Invalid" << std::endl;
+    break;
   }
-  // player winner
-  else if ((playerOne.getPlayerChoice() == 1 &&
-            computer.getPlayerChoice() == 3) ||
-           (playerOne.getPlayerChoice() == 2 &&
-            computer.getPlayerChoice() == 1) ||
-           (playerOne.getPlayerChoice() == 3 &&
-            computer.getPlayerChoice() == 2)) {
+} // -----------------------------------------------------------------------------
+
+void QuartzParchmentShears::WinnerMechanics(int player) {
+  if (player == 2) {
+    // computer wins
+    playerOne.setIsWinner(false);
+    computer.setIsWinner(true);
+
+    std::cout << std::endl;
+
+    // show winner
+    playerOne.showWinner();
+    computer.showWinner();
+
+    // add score
+    computer.addScore();
+  } else if (player == 1) {
     // player wins
     playerOne.setIsWinner(true);
     computer.setIsWinner(false);
+
+    std::cout << std::endl;
 
     // show winner
     playerOne.showWinner();
@@ -44,24 +71,30 @@ void QuartzParchmentShears::DetermineWinner() {
     // add score
     playerOne.addScore();
   }
-  // computer winner
-  else if ((playerOne.getPlayerChoice() == 3 &&
-            computer.getPlayerChoice() == 1) ||
-           (playerOne.getPlayerChoice() == 1 &&
-            computer.getPlayerChoice() == 2) ||
-           (playerOne.getPlayerChoice() == 2 &&
-            computer.getPlayerChoice() == 3)) {
-    // player wins
-    playerOne.setIsWinner(false);
-    computer.setIsWinner(true);
+} // -----------------------------------------------------------------------------
 
-    // show winner
-    playerOne.showWinner();
-    computer.showWinner();
+void QuartzParchmentShears::DetermineWinner() {
+  // show player's and computer's choices
+  showChoice(1); // player
+  showChoice(2); // computer
 
-    // add score
-    computer.addScore();
+  // tie
+  if (playerOne.getPlayerChoice() == computer.getPlayerChoice()) {
+    std::cout << "Tie!" << std::endl;
   }
+  // computer winner
+  else if ((playerOne.getPlayerChoice() + startRange) %
+               (endRange + startRange) ==
+           computer.getPlayerChoice()) {
+    WinnerMechanics(2);
+
+  }
+  // player winner
+  else {
+    WinnerMechanics(1);
+  }
+
+  std::cout << std::endl;
 
   // show score
   playerOne.showScore();
@@ -76,14 +109,12 @@ void QuartzParchmentShears::GameMechanics() {
   std::cout << "2 - Paper" << std::endl;
   std::cout << "3 - Scissors" << std::endl;
 
-  // set players' names
   computer.setPlayerName("Computer");
   playerOne.setPlayerName("Player One");
 
-  // prompt ranges
-  int startRange = 1;
-  int endRange = 3;
   std::string prompt = ", enter your choice: ";
+
+  std::cout << std::endl;
 
   // get/set player choice
   playerOne.setPlayerChoice(playerOne.playerPrompt(
@@ -91,30 +122,33 @@ void QuartzParchmentShears::GameMechanics() {
       FILENAME + "QuartzParchmentShears::GameMechanics()"));
 
   // generate computer choice
-  computer.setPlayerChoice(computer.randomNumber(startRange, endRange));
-
-  std::cout << std::endl;
+  computer.setPlayerChoice(
+      computer.randomNumber(startRange, endRange + startRange));
 
   // determine winner
   DetermineWinner();
 
   std::cout << std::endl;
+
 } // -----------------------------------------------------------------------------
 
 void QuartzParchmentShears::GamePlay() {
-  system("clear");
   char ans = ' ';
 
   do {
+    system("clear");
+
     // start game
     GameMechanics();
 
     ans = inputChar("Play again? (y/n): ", 'y', 'n',
                     FILENAME + "QuartzParchmentShears::GamePlay()");
 
-    // reset game
-    Reset();
+    // reset game and keep score
+    Reset(true);
 
-    system("clear");
   } while (ans == 'y' || ans == 'Y');
+
+  // reset game without keeping score
+  Reset(false);
 } // -----------------------------------------------------------------------------
