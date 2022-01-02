@@ -11,9 +11,9 @@ QuartzParchmentShears::~QuartzParchmentShears() {
 
 QuartzParchmentShears::QuartzParchmentShears() {
   playerName = "";
-  rockRating = 0;
-  paperRating = 0;
-  scissorsRating = 0;
+  rockWeight = 0;
+  paperWeight = 0;
+  scissorsWeight = 0;
   startRange = 1;
   endRange = 5;
 } // -----------------------------------------------------------------------------
@@ -21,23 +21,20 @@ QuartzParchmentShears::QuartzParchmentShears() {
 void QuartzParchmentShears::Reset(bool keepScore) {
   playerOne.reset(keepScore);
   computer.reset(keepScore);
-  rockRating = 0;
-  paperRating = 0;
-  scissorsRating = 0;
+  rockWeight = 0;
+  paperWeight = 0;
+  scissorsWeight = 0;
   startRange = 1;
   endRange = 5;
 } // -----------------------------------------------------------------------------
 
 int QuartzParchmentShears::CalculateComputerChoice() {
-  // ALGO: https://daniel.lawrence.lu/programming/rps/#s2.1
-  // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-  // THE FREQUENTIST ALGORITHM
-  playerOne.getPlayerChoice() == 1   ? rockRating += 1
-  : playerOne.getPlayerChoice() == 2 ? paperRating += 1
-                                     : scissorsRating += 1;
+  playerOne.getPlayerChoice() == 1   ? rockWeight += 1
+  : playerOne.getPlayerChoice() == 2 ? paperWeight += 1
+                                     : scissorsWeight += 1;
 
-  return rockRating > paperRating && rockRating > scissorsRating ? 2
-         : paperRating > scissorsRating                          ? 3
+  return rockWeight > paperWeight && rockWeight > scissorsWeight ? 2
+         : paperWeight > scissorsWeight                          ? 3
                                                                  : 1;
 } // -----------------------------------------------------------------------------
 

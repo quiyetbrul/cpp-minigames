@@ -5,9 +5,9 @@
 
 class QuartzParchmentShears : public Player {
 private:
-  int rockRating;
-  int paperRating;
-  int scissorsRating;
+  int rockWeight;
+  int paperWeight;
+  int scissorsWeight;
   int startRange;
   int endRange;
 
