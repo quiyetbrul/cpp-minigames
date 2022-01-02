@@ -14,6 +14,7 @@ void Menu() {
     std::cout << "1. Quartz Parchment Shears" << std::endl;
     std::cout << "2. Tic Tac Toe" << std::endl;
     std::cout << "3. Guess Number" << std::endl;
+    std::cout << "4. Hangman" << std::endl;
     std::cout << "0. Quit" << std::endl;
     std::cout << "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=" << std::endl;
     int choice = inputInteger("Enter your choice: ", 0, 4, FILENAME + "Menu()");
@@ -28,6 +29,9 @@ void Menu() {
       break;
     case 3:
       GuessNumber.GamePlay();
+      break;
+    case 4:
+      std::cout << "Hangman is not implemented yet" << std::endl;
       break;
     case 0:
       exit(0);
