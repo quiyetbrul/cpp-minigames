@@ -1,4 +1,5 @@
-#include "Menu.h"
+#include "include/Menu.h"
+
 const std::string FILENAME = "{Menu.cpp}";
 
 void Menu() {
@@ -6,6 +7,7 @@ void Menu() {
   QuartzParchmentShears QuartzParchmentShears;
   TicTacToe TicTacToe;
   GuessNumber GuessNumber;
+  Hangman Hangman;
 
   do {
     system("clear");
@@ -31,7 +33,7 @@ void Menu() {
       GuessNumber.GamePlay();
       break;
     case 4:
-      std::cout << "Hangman is not implemented yet" << std::endl;
+      Hangman.GamePlay();
       break;
     case 0:
       exit(0);
