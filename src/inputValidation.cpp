@@ -36,7 +36,7 @@ char inputChar(std::string prompt, std::string listChars, std::string where) {
     try {
       std::cin >> input;
       input = tolower(input);
-      if (std::cin.fail() || listChars.find(input) != std::string::npos) {
+      if (std::cin.fail() || listChars.find(input) == std::string::npos) {
         cinIgnore();
         throw std::invalid_argument(invalidInput(
             where, "a character type and one of the following: " + listChars));
