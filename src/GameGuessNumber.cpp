@@ -1,4 +1,4 @@
-#include "GameGuessNumber.h"
+#include "include/GameGuessNumber.h"
 
 static Player playerOne;
 static Player computer;
