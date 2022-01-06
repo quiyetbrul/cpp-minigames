@@ -1,4 +1,4 @@
-#include "GameWelcome.h"
+#include "include/GameWelcome.h"
 
 void Welcome(std::string gameName, bool players) {
   std::cout << "Welcome to the game of " << gameName << "!" << std::endl;
