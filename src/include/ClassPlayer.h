@@ -1,15 +1,18 @@
 #ifndef CLASSPLAYER_H
 #define CLASSPLAYER_H
 
-#include "GameObject.h"
 #include "GameWelcome.h"
 #include "InputValidation.h"
+#include "TemplateVector.h"
 
-class Player : public GameObject {
+class Player {
 protected:
   std::string playerName;
   int playerChoice;
   int playerScore;
+  int tie;
+  int round;
+  bool isTie;
   bool isWinner;
 
 public:
@@ -17,7 +20,7 @@ public:
   // Precondition:
   // Postcondition:
   ~Player();
-  
+
   // default constructor
   // Precondition:
   // Postcondition: initializes data members

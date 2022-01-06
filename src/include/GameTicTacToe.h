@@ -33,19 +33,24 @@ public:
   void Reset();
 
   // IsWinner
-  // Precondition: board is a 3x3 array, player is an int &
+  // Precondition:
   // Postcondition: returns true if there is a winner, false otherwise
-  void IsWinner();
+  void CheckWinner();
 
   // IsDraw
-  // Precondition: board is a 3x3 array
+  // Precondition:
   // Postcondition: returns true if there is a draw, false otherwise
   bool IsDraw();
 
   // displayBoard
-  // Precondition: board is a 3x3 array
+  // Precondition: 
   // Postcondition: board is displayed
   void DisplayBoard();
+
+  // GetChoices
+  // Precondition: player is Player object, bool is true if computer is playing
+  // Postcondition: takes in player's choice and updates data members
+  void GetChoices(Player &player, bool isAI);
 
   // GameMechanics
   // Precondition:

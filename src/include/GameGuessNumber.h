@@ -2,7 +2,7 @@
 #define GAMEGUESSNUMBER_H
 
 #include "ClassPlayer.h"
-#include "TemplateVector.h"
+
 class GuessNumber : public Player {
 private:
   std::string playerName;
