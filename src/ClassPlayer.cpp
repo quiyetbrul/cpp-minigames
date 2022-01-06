@@ -1,4 +1,4 @@
-#include "ClassPlayer.h"
+#include "include/ClassPlayer.h"
 
 Player::~Player() {
   // destructor
@@ -8,6 +8,9 @@ Player::Player() {
   playerName = "";
   playerChoice = 0;
   playerScore = 0;
+  tie = 0;
+  round = 0;
+  isTie = false;
   isWinner = false;
 } // -----------------------------------------------------------------------------
 
@@ -20,11 +23,12 @@ Player::Player(std::string playerName, int playerChoice, int playerScore,
 } // -----------------------------------------------------------------------------
 
 void Player::reset(bool keepScore) {
-  setPlayerName(" ");
   setPlayerChoice(0);
   setIsWinner(false);
-  if (!keepScore)
+  if (!keepScore) {
     setPlayerScore(0);
+    tie = 0;
+  }
 } // -----------------------------------------------------------------------------
 
 void Player::setPlayerName(std::string playerName) {
