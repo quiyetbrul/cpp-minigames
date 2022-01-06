@@ -6,6 +6,9 @@
 class Hangman : public Player {
 private:
 public:
+  ~Hangman();
+  
+  Hangman();
   // GameMechanics
   // Precondition:
   // Postcondition: game mechanics are run

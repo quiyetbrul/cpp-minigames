@@ -3,6 +3,10 @@
 
 #include "include/GameHangman.h"
 
+Hangman::~Hangman(){}
+
+Hangman::Hangman(){}
+
 void Hangman::GameMechanics(){}
 
 void Hangman::GamePlay() {
