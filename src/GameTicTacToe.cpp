@@ -1,196 +1,178 @@
 #include "include/GameTicTacToe.h"
-#include "include/InputValidation.h"
-
-static Player playerOne;
-static Player playerTwo;
 
 const std::string FILENAME = "{GameTicTacToe.cpp}";
 
-const int SIZE = 3;
+Move::Move() {
+} // -----------------------------------------------------------------------------
 
 TicTacToe::~TicTacToe() {
-  std::cout << "Destructor called" << std::endl;
 } // -----------------------------------------------------------------------------
 
 TicTacToe::TicTacToe() {
-  player = 1;
-  row = 0;
-  column = 0;
-  sumRow = 0;
-  sumColumn = 0;
-  sumDiagonalRight = 0;
-  sumDiagonalLeft = 0;
-  startRange = 0;
-  endRange = 2;
+  for (int row = 0; row < 3; row++) {
+    for (int column = 0; column < 3; column++) {
+      board[row][column] = ' ';
+    }
+  }
 } // -----------------------------------------------------------------------------
 
 void TicTacToe::Reset() {
-  playerOne.reset(false);
-  playerTwo.reset(false);
-
-  player = 1;
-  sumRow = 0;
-  sumColumn = 0;
-  sumDiagonalRight = 0;
-  sumDiagonalLeft = 0;
-
-  for (int row = 0; row < SIZE; row++) {
-    for (int column = 0; column < SIZE; column++) {
-      board[row][column] = 0;
+  for (int row = 0; row < 3; row++) {
+    for (int column = 0; column < 3; column++) {
+      board[row][column] = ' ';
     }
   }
+
+  player = ' ';
+  computer = ' ';
 } // -----------------------------------------------------------------------------
 
-void TicTacToe::CheckWinner() {
-
-  for (int i = 0; i < SIZE; i++) {
-    // check rows
-    if (board[i][0] + board[i][1] + board[i][2] == SIZE) {
-      playerOne.setIsWinner(true);
-      return;
-    } else if (board[i][0] + board[i][1] + board[i][2] == -SIZE) {
-      playerTwo.setIsWinner(true);
-      return;
+bool TicTacToe::IsWinner() {
+  int winStates[8][3] = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6},
+                         {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};
+  for (int i = 0; i < 8; i++) {
+    bool win = true;
+    int firstRow = winStates[i][0] / 3, firstColumn = winStates[i][0] % 3;
+    for (int j = 0; j < 3; j++) {
+      int row = winStates[i][j] / 3, col = winStates[i][j] % 3;
+      if (board[firstRow][firstColumn] == ' ' ||
+          board[firstRow][firstColumn] != board[row][col]) {
+        win = false;
+      }
     }
-    // check columns
-    if (board[0][i] + board[1][i] + board[2][i] == SIZE) {
-      playerOne.setIsWinner(true);
-      return;
-    } else if (board[0][i] + board[1][i] + board[2][i] == -SIZE) {
-      playerTwo.setIsWinner(true);
-      return;
-    }
+    if (win)
+      return true;
   }
-
-  // all diagonal
-  if ((board[0][0] + board[1][1] + board[2][2] == SIZE) ||
-      (board[0][2] + board[1][1] + board[2][0] == SIZE)) {
-    playerOne.setIsWinner(true);
-    return;
-  } else if ((board[0][0] + board[1][1] + board[2][2] == -SIZE) ||
-             (board[0][2] + board[1][1] + board[2][0] == -SIZE)) {
-    playerTwo.setIsWinner(true);
-    return;
-  }
-
-  // for (int row = 0; row < SIZE; row++) {
-  //   for (int column = 0; column < SIZE; column++) {
-  //     // add rows
-  //     sumRow += board[row][column];
-
-  //     // add columns
-  //     sumColumn += board[column][row];
-
-  //     // check diagonals
-  //     if (row == column)
-  //       sumDiagonalLeft += board[row][column];
-  //     else if ((row + column) == (SIZE - 1))
-  //       sumDiagonalRight += board[row][SIZE - column - 1];
-  //   } // end nested inner for loop
-
-  //   // check for winner
-  //   if (sumRow == SIZE || sumColumn == SIZE || sumDiagonalLeft == SIZE ||
-  //       sumDiagonalRight == SIZE)
-  //     playerOne.setIsWinner(true);
-  //   if (sumRow == -SIZE || sumColumn == -SIZE || sumDiagonalLeft == -SIZE ||
-  //       sumDiagonalRight == -SIZE)
-  //     playerTwo.setIsWinner(true);
-  // } // end nested outer for loop
-
+  return false;
 } // -----------------------------------------------------------------------------
 
 bool TicTacToe::IsDraw() {
-  for (int row = 0; row < SIZE; row++)
-    for (int column = 0; column < SIZE; column++)
-      if (board[row][column] == 0)
+  if (IsWinner())
+    return false;
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      if (board[i][j] == ' ') {
         return false;
+      }
+    }
+  }
   return true;
 } // -----------------------------------------------------------------------------
 
-void TicTacToe::DisplayBoard() {
-  for (int row = 0; row < SIZE; row++) {
-    for (int column = 0; column < SIZE; column++) {
-      printf((board[row][column] == 1)    ? " [ X ]\t"
-             : (board[row][column] == -1) ? " [ O ]\t"
-                                          : "[%d, %d]\t",
-             row, column);
-    }
-    std::cout << std::endl;
+void TicTacToe::PlayerMove() {
+  while (true) {
+    int cell = inputInteger("Enter an empty square: ", 1, 9,
+                            FILENAME + "TicTacToe::GameMechanics()");
+    int row = (cell - 1) / 3, column = (cell - 1) % 3;
+    if (board[row][column] == ' ') {
+      board[row][column] = player;
+      break;
+    } else
+      std::cout << invalidInput(FILENAME + "TicTacToe::PlayerMove()",
+                                "an empty square")
+                << std::endl;
   }
 } // -----------------------------------------------------------------------------
 
-void TicTacToe::GetChoices(Player &player, bool isAI) {
-  std::string promptRow = " choose row: ";
-  std::string promptColumn = " choose column: ";
+void TicTacToe::ComputerMove() {
+  Move bestMove = Minimax(true);
+  board[bestMove.getRow()][bestMove.getColumn()] = computer;
+} // -----------------------------------------------------------------------------
 
-  if (!isAI) {
-    row = player.playerPrompt(promptRow, startRange, endRange,
-                              FILENAME + "TicTacToe::GameMechanics()");
-    column = player.playerPrompt(promptColumn, startRange, endRange,
-                                 FILENAME + "TicTacToe::GameMechanics()");
+Move TicTacToe::Minimax(bool isMaximizing) {
+  Move bestMove;
+  if (IsWinner()) {
+    bestMove.setScore(isMaximizing ? -1 : 1);
+    return bestMove;
   }
+
+  bestMove.setScore(isMaximizing ? INT_MIN : INT_MAX);
+
+  for (int row = 0; row < 3; row++) {
+    for (int column = 0; column < 3; column++) {
+
+      // check if the square is empty
+      if (board[row][column] == ' ') {
+        // whos maximizing?
+        board[row][column] = isMaximizing ? computer : player;
+
+        // recursively call minimax
+        Move boardStates = Minimax(!isMaximizing);
+
+        if (isMaximizing) {
+          if (boardStates.getScore() > bestMove.getScore()) {
+            bestMove.setScore(boardStates.getScore());
+            bestMove.setRow(row);
+            bestMove.setColumn(column);
+          }
+        } else {
+          if (boardStates.getScore() < bestMove.getScore()) {
+            bestMove.setScore(boardStates.getScore());
+            bestMove.setRow(row);
+            bestMove.setColumn(column);
+          }
+        }
+        // reset the square
+        board[row][column] = ' ';
+      }
+    }
+  }
+  return bestMove;
+} // -----------------------------------------------------------------------------
+
+void TicTacToe::DisplayBoard() {
+  std::cout << std::endl;
+  for (int row = 0; row < 3; row++) {
+    if (row) {
+      std::cout << "-----------" << std::endl;
+    }
+    for (int column = 0; column < 3; column++) {
+      if (column) {
+        std::cout << "|";
+      }
+      std::cout << ' ';
+      if (board[row][column] == ' ') {
+        std::cout << 3 * row + column + 1;
+      } else {
+        std::cout << board[row][column];
+      }
+      std::cout << ' ';
+    }
+    std::cout << std::endl;
+  }
+  std::cout << std::endl;
 } // -----------------------------------------------------------------------------
 
 void TicTacToe::GameMechanics() {
   std::string gameName = "Tic Tac Toe";
-
-  char multiplayerPrompt =
-      inputChar("(M)ultiplayer or (S)ingleplayer? ", 'm', 's',
-                FILENAME + "TiceTacToe::GameMechanics()");
-  bool multiplayerGame = (multiplayerPrompt == 'm') ? true : false;
-
-  Welcome(gameName, multiplayerGame);
+  Welcome(gameName, false);
   std::cout << std::endl;
+  std::cout << "Computer goes first." << std::endl;
 
-  playerOne.setPlayerName("Player One");
-  playerTwo.setPlayerName(multiplayerGame ? "Player Two" : "Computer");
-
-  DisplayBoard();
-
-  std::string promptRow = " choose row: ";
-  std::string promptColumn = " choose column: ";
-  std::string ERROR = "ERROR: Square has been played. Choose again.\n";
+  computer = 'X';
+  player = 'O';
 
   while (true) {
-    while (true) {
-      if (player == 1) {
-        GetChoices(playerOne, false);
-      } else if (player == -1) {
-        if (multiplayerGame)
-          GetChoices(playerTwo, false);
-      }
-
-      if (board[row][column] == 0) {
-        board[row][column] = player;
-        break;
-      } else {
-        std::cout << ERROR << std::endl;
-      }
-    }
-
-    std::cout << std::endl;
-    CheckWinner();
-
-    if (playerOne.getIsWinner()) {
-      DisplayBoard();
-      playerOne.showWinner();
-      break;
-    } else if (playerTwo.getIsWinner()) {
-      DisplayBoard();
-      playerTwo.showWinner();
-      break;
-    } else if (IsDraw()) {
-      DisplayBoard();
-      std::cout << "It's a draw!" << std::endl;
-      break;
-    }
-
+    std::cout << "Computer's move: ";
+    ComputerMove();
     DisplayBoard();
-
-    // switch player
-    player *= -1;
+    if (IsWinner()) {
+      std::cout << "Computer wins!" << std::endl;
+      return;
+    } else if (IsDraw()) {
+      std::cout << "Tie!" << std::endl;
+      return;
+    }
+    PlayerMove();
+    DisplayBoard();
+    if (IsWinner()) {
+      std::cout << "Player wins!" << std::endl;
+      return;
+    } else if (IsDraw()) {
+      std::cout << "Tie!" << std::endl;
+      return;
+    }
   }
-  std::cout << std::endl;
 } // -----------------------------------------------------------------------------
 
 void TicTacToe::GamePlay() {
@@ -199,13 +181,13 @@ void TicTacToe::GamePlay() {
   do {
     system("clear");
 
-    // reset game
-    Reset();
-
     // start game
     GameMechanics();
 
     ans = inputChar("Play again? (y/n): ", 'y', 'n',
-                    FILENAME + "TiceTacToe::GamePlay()");
+                    FILENAME + "GuessNumber::GamePlay()");
+
+    // reset game
+    Reset();
   } while (ans == 'y' || ans == 'Y');
 } // -----------------------------------------------------------------------------
