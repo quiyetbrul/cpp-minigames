@@ -1,0 +1,1 @@
+add_library(GameQuartzParchmentShears GameQuartzParchmentShears.cpp)
